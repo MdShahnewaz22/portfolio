@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <a href="https://drive.google.com/file/d/10gsjir55mCh5K5zZvMMfnu8eaK70-hLg/view?usp=sharing"
+                                <a href="https://drive.google.com/file/d/1qM0t0MUwtn7K-B2QHpfdi3UNLlsxNRks/view?usp=drive_link"
                                     download target="_blank"
                                     class="text-center text-sm border border-theme bg-theme flex items-center justify-center gap-2 text-white rounded-4xl py-3.5 transition duration-300 text-[15px] font-semibold hover:bg-themeHover hover:border-themeHover">
                                     DOWNLOAD CV
@@ -608,7 +608,7 @@
                                         I design products that are more than pretty. I make them shippable.
                                     </p>
                                 </div>
-                                <div
+                                {{-- <div
                                     class="relative p-5 transition duration-300 border py-7 md:p-7 card-item group border-platinum dark:border-metalBlack rounded-2xl xl:p-8 2xl:p-10 hover:border-theme">
                                     <div
                                         class="absolute transition duration-300 md:top-10 icon right-6 top-7 md:right-8 group-hover:-rotate-45 lg:top-11">
@@ -644,8 +644,8 @@
                                     <p>
                                         I design products that are more than pretty. I make them shippable.
                                     </p>
-                                </div>
-                                <div
+                                </div> --}}
+                                {{-- <div
                                     class="relative p-5 transition duration-300 border py-7 md:p-7 card-item group border-platinum dark:border-metalBlack rounded-2xl xl:p-8 2xl:p-10 hover:border-theme">
                                     <div
                                         class="absolute transition duration-300 md:top-10 icon right-6 top-7 md:right-8 group-hover:-rotate-45 lg:top-11">
@@ -665,7 +665,7 @@
                                     <p>
                                         I design products that are more than pretty. I make them shippable.
                                     </p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -698,7 +698,7 @@
                             <div class="mt-12 skills-slider xl:mt-16">
                                 <div class="swiper">
                                     <div class="swiper-wrapper">
-                                        <div class="space-y-5 text-center swiper-slide">
+                                        {{-- <div class="space-y-5 text-center swiper-slide">
                                             <div class="text-center icon">
                                                 <img src="{{ asset('assets/frontend/assets/img/skill/figma.svg') }}"
                                                     class="dark:grayscale" alt="Figma">
@@ -712,8 +712,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-black dark:text-white name">Figma</div>
-                                        </div>
-                                        <div class="space-y-5 text-center swiper-slide">
+                                        </div> --}}
+                                        {{-- <div class="space-y-5 text-center swiper-slide">
                                             <div class="text-center icon">
                                                 <img src="{{ asset('assets/frontend/assets/img/skill/webflow.svg') }}"
                                                     class="dark:grayscale" alt="webflow">
@@ -727,7 +727,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-black dark:text-white name">Weblfow</div>
-                                        </div>
+                                        </div> --}}
                                         <div class="space-y-5 text-center swiper-slide">
                                             <div class="text-center icon">
                                                 <img src="{{ asset('/assets/frontend/assets/img/skill/tailwind.svg') }}"
@@ -1321,220 +1321,7 @@
                     <!-- Blog Section End -->
 
 
-                    <!-- Testimonial Section Start -->
-                    <div data-scroll-index="7" id="testimonial"
-                        class="py-5 xl:py-3.5 max-w-content xl:max-2xl:max-w-50rem max-xl:mx-auto xl:ml-auto">
 
-                        <div
-                            class="px-5 py-8 bg-white md:p-8 dark:bg-nightBlack rounded-2xl service-section lg:p-10 2xl:p-13">
-                            <div
-                                class="inline-flex items-center gap-2 px-4 py-2 text-xs tracking-wide text-black border dark:text-white lg:px-5 section-name border-platinum dark:border-greyBlack200 rounded-4xl">
-                                <i class="fal fa-comment-alt-check text-theme"></i>
-                                TESTIMONIAL
-                            </div>
-                            <div class="mt-5 mb-8 md:my-10 section-title">
-                                <h2
-                                    class="title text-[32px] md:text-4xl lg:text-5xl font-extralight text-black dark:text-white leading-1.27">
-                                    What <span class="font-semibold text-theme">People Say</span>
-                                </h2>
-                                <p class="max-w-xl mt-4 md:mt-6 subtitle">
-                                    I design products that are more than pretty. I make them shippable and usable, tempor
-                                    non mollit dolor et do aute
-                                </p>
-                            </div><!--./section-title-->
-
-                            <div class="mt-12 testimonial-slider">
-                                <div class="swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="text-center slider-inner md:px-5">
-                                                <div class="image flex-center">
-                                                    <img src="{{ asset('assets/frontend/assets/img/testimonial/author1.png') }}"
-                                                        alt="">
-                                                </div>
-                                                <div class="mt-6 mb-3 text-center rating text-lightOrange">
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                </div>
-                                                <div class="text-sm md:text-[15px] leading-loose content">
-                                                    Working with <span class="font-semibold text-theme">Reddick</span> is a
-                                                    game-changer.
-                                                    Their coding expertise and commitment to quality make every project a
-                                                    success.
-                                                </div>
-                                                <div class="mt-5 text-center author">
-                                                    <h6 class="text-lg font-medium text-black dark:text-white">Alex Johnson
-                                                    </h6>
-                                                    <p class="text-sm">Developer</p>
-                                                </div>
-                                            </div>
-                                        </div><!--./testimonial-card-->
-
-                                        <div class="swiper-slide">
-                                            <div class="text-center slider-inner md:px-5">
-                                                <div class="image flex-center">
-                                                    <img src="{{ asset('assets/frontend/assets/img/testimonial/author2.png') }}"
-                                                        alt="">
-                                                </div>
-                                                <div class="mt-6 mb-3 text-center rating text-lightOrange">
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                </div>
-                                                <div class="text-sm md:text-[15px] leading-loose content">
-                                                    <span class="font-semibold text-theme">Reddick</span> exceeds
-                                                    expectations with
-                                                    top-tier coding skills. Reliable, collaborative, and a true asset to any
-                                                    project. Highly recommended
-                                                </div>
-                                                <div class="mt-5 text-center author">
-                                                    <h6 class="text-lg font-medium text-black dark:text-white">Mily Martin
-                                                    </h6>
-                                                    <p class="text-sm">CEO-itTheme</p>
-                                                </div>
-                                            </div>
-                                        </div><!--./testimonial-card-->
-
-                                        <div class="swiper-slide">
-                                            <div class="text-center slider-inner md:px-5">
-                                                <div class="image flex-center">
-                                                    <img src="{{ asset('assets/frontend/assets/img/testimonial/author2.png') }}"
-                                                        alt="">
-                                                </div>
-                                                <div class="mt-6 mb-3 text-center rating text-lightOrange">
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                    <svg width="15" height="15" viewBox="0 0 15 15"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M14.4391 5.35656L10.1019 4.65667C10.0073 4.64115 9.92204 4.58373 9.87552 4.49217L7.86898 0.579903C7.69686 0.241595 7.21151 0.241595 7.03784 0.579903L5.0313 4.49217C4.98788 4.57753 4.9057 4.64115 4.80491 4.65667L0.467749 5.35656C0.0878407 5.41864 -0.0563694 5.87799 0.211892 6.14802L3.31008 9.26728C3.37521 9.33556 3.41088 9.43178 3.39537 9.53265L2.72239 13.8763C2.66346 14.2581 3.05113 14.539 3.39382 14.3667L7.31385 12.3819C7.39914 12.3384 7.50148 12.3353 7.59297 12.3819L11.513 14.3667C11.8572 14.5405 12.2434 14.2566 12.186 13.8763L11.5146 9.54662C11.4944 9.44885 11.5223 9.34332 11.5983 9.26728L14.6949 6.14802C14.9632 5.87799 14.8159 5.41709 14.4391 5.35656Z"
-                                                            fill="#FFB657" />
-                                                    </svg>
-                                                </div>
-                                                <div class="text-sm md:text-[15px] leading-loose content">
-                                                    <span class="font-semibold text-theme">Reddick</span> delivers
-                                                    excellence in every
-                                                    line of code. Dependable, innovative, and a key player in project
-                                                    success. Outstanding performance.
-                                                </div>
-                                                <div class="mt-5 text-center author">
-                                                    <h6 class="text-lg font-medium text-black dark:text-white">Alex Johnson
-                                                    </h6>
-                                                    <p class="text-sm">Developer</p>
-                                                </div>
-                                            </div>
-                                        </div><!--./testimonial-card-->
-                                    </div>
-
-                                    <!-- Slider Controls Start -->
-                                    <div
-                                        class="testimonial-slider-navigation flex justify-center items-center gap-2.5 mt-10 lg:mt-12">
-                                        <button
-                                            class="transition border rounded-full button-prev w-11 h-11 group border-platinum dark:border-greyBlack flex-center hover:bg-theme hover:border-theme"
-                                            aria-label="Previous">
-                                            <svg width="18" height="10" viewBox="0 0 18 10" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M18 5.08006C18 4.77812 17.7121 4.5334 17.3571 4.5334L2.19486 4.5334L6.07553 0.933214C6.32659 0.719715 6.32659 0.373628 6.07553 0.160126C5.82448 -0.0533767 5.41745 -0.0533766 5.1664 0.160126L0.188289 4.69352C-0.0627618 4.90702 -0.0627618 5.2531 0.188289 5.4666L5.33115 9.83986C5.5822 10.0534 5.98923 10.0534 6.24028 9.83986C6.49134 9.62637 6.49134 9.28028 6.24028 9.06678L2.19486 5.62672L17.3571 5.62671C17.7121 5.62671 18 5.38199 18 5.08006Z"
-                                                    class="fill-[#A0A0A0] group-hover:fill-white" />
-                                            </svg>
-                                        </button>
-                                        <div class="text-sm font-light text-center text-black dark:text-white counter w-7">
-                                        </div>
-                                        <button
-                                            class="transition border rounded-full button-next w-11 h-11 group border-platinum dark:border-greyBlack flex-center hover:bg-theme hover:border-theme"
-                                            aria-label="Next">
-                                            <svg width="18" height="10" viewBox="0 0 18 10" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M4.44113e-07 4.91994C4.17717e-07 5.22187 0.287871 5.4666 0.642857 5.4666L15.8051 5.4666L11.9245 9.06678C11.6734 9.28028 11.6734 9.62637 11.9245 9.83987C12.1755 10.0534 12.5826 10.0534 12.8336 9.83987L17.8117 5.30648C18.0628 5.09298 18.0628 4.7469 17.8117 4.5334L12.6688 0.160134C12.4178 -0.0533766 12.0108 -0.0533766 11.7597 0.160134C11.5087 0.373633 11.5087 0.719718 11.7597 0.933218L15.8051 4.37328L0.642857 4.37328C0.287872 4.37328 4.70509e-07 4.61801 4.44113e-07 4.91994Z"
-                                                    class="fill-[#A0A0A0] group-hover:fill-white" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <!-- Slider Controls End -->
-                                </div>
-                            </div><!--./testimonial-slider-->
-                        </div>
-                    </div>
-                    <!-- Testimonial Section End -->
 
 
                     <!-- Contact Section Start -->
@@ -1630,8 +1417,6 @@
                                 </div><!-- Contact info end -->
 
                                 <div class="md:col-span-7">
-                                    {{-- <form id="contactForm" action="https://minfotailwind.netlify.app/contact-form.php"
-                                    method="POST" class="space-y-4"> --}}
 
                                     {{-- <form  class="space-y-4"
                                         action="{{ route('frontend.contact') }}" method="post"> --}}
@@ -1671,7 +1456,7 @@
                             </div>
                             <iframe
                                 class="w-full overflow-hidden border-10 border-platinum dark:border-greyBlack embed-map h-80 2xl:h-96 rounded-2xl"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25908.703277839155!2d-74.18208878159237!3d40.640176526919696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1699271377092!5m2!1sen!2sbd"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.6553929266474!2d90.41251787421886!3d23.794681191318657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c6b37f1bc331%3A0x576d36470d8ef378!2sAftabnagar%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1724063598481!5m2!1sen!2sbd"
                                 aria-label="Contact Map">
                             </iframe>
                         </div>

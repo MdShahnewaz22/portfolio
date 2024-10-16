@@ -11,12 +11,12 @@ Support	      :	    themearray@gmail.com
 /*------------------------------------------------------------------
 [Table of contents]
 
-1.  Tailwind's Base styles 
-2.  Tailwind's Components styles 
-3.  Tailwind's Utilities styles 
+1.  Tailwind's Base styles
+2.  Tailwind's Components styles
+3.  Tailwind's Utilities styles
 4.  Tailwind Base Layer
     4.1    Root Variables
-    4.2    Global Typography 
+    4.2    Global Typography
 5. Custom Utilities Layer
 6. Preloader
 7. Custom Cursor Style
@@ -646,9 +646,9 @@ input:not([type='checkbox']),
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-:is(.dark input:not([type='checkbox'])),:is(.dark 
-    input:not([type='radio'])),:is(.dark 
-    input:not([type='file'])),:is(.dark 
+:is(.dark input:not([type='checkbox'])),:is(.dark
+    input:not([type='radio'])),:is(.dark
+    input:not([type='file'])),:is(.dark
     textarea) {
   border-color: var(--greyBlack);
   --tw-text-opacity: 1;

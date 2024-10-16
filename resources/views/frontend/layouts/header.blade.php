@@ -6,22 +6,22 @@
 
     <!-- Specific Meta
     ================================================== -->
-    <meta name="viewport" 
+    <meta name="viewport"
         content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="keyword"
         content="resume, cv, portfolio, vcard, responsive, retina, jquery, css3, tailwindcss, material CV, creative, designer, developer, online cv, online resume, powerful portfolio, professional, landing page">
-    <meta name="description" 
+    <meta name="description"
         content="Minfo vCard/Resume TailwindCSS HTML Template">
-    <meta name="author" 
+    <meta name="author"
         content="Themearray">
 
     <!-- Site Title
     ================================================== -->
-    <title>Minfo - Tailwind CSS Personal Resume/vCard Template</title>
+    <title>My Parsonal Information</title>
 
     <!-- Site Favicon
     ================================================== -->
-    <link rel="shortcut icon" href="{{ asset('assets/frontend/assets/img/user-sidebar-thumb.png') }}" sizes="any">
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/assets/img/newaz.jpg') }}" sizes="any">
 
     <!-- Google Fonts
     ================================================== -->
