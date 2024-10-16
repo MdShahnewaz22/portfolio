@@ -33,11 +33,53 @@ const applyFilter = () => {
 
                 <div class="grid w-full grid-cols-1 gap-2 md:grid-cols-5">
 
+                    <link
+                        rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+                    />
+
                     <div class="flex space-x-2">
-                        <div class="w-full">
+                        <div class="relative w-full">
                             <input id="name" v-model="filters.name"
-                                   class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
+                                   class="block w-full p-2 pl-10 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
                                    type="text" placeholder="Name" @input="applyFilter" />
+
+                                   <span
+                                class="absolute inset-y-0 left-0 flex items-center pl-3"
+                            >
+                                <i
+                                    class="fas fa-search text-slate-400 dark:text-slate-300"
+                                ></i>
+                            </span>
+                        </div>
+
+                        <div class="block min-w-24 md:hidden">
+                            <select v-model="filters.numOfData" @change="applyFilter"
+                                    class="w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600">
+                                <option value="10">Show 10</option>
+                                <option value="20">Show 20</option>
+                                <option value="30">Show 30</option>
+                                <option value="40">Show 40</option>
+                                <option value="100">Show 100</option>
+                                <option value="150">Show 150</option>
+                                <option value="500">Show 500</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-2">
+                        <div class="relative w-full">
+                            <input id="gmail" v-model="filters.gmail"
+                                   class="block w-full p-2 pl-10 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
+                                   type="text" placeholder="Gmail" @input="applyFilter" />
+
+                                   <span
+                                class="absolute inset-y-0 left-0 flex items-center pl-3"
+                            >
+                                <i
+                                    class="fas fa-search text-slate-400 dark:text-slate-300"
+                                ></i>
+                            </span>
                         </div>
 
                         <div class="block min-w-24 md:hidden">

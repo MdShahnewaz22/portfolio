@@ -70,7 +70,7 @@
 				$query->where('name', 'like', '%'.request()->name .'%');
 
 			if(request()->filled('gmail'))
-				$query->where('gmail', 'like', request()->gmail .'%');
+				$query->where('gmail', 'like','%'. request()->gmail .'%');
 
 			if(request()->filled('message'))
 				$query->where('message', 'like', request()->massage .'%');
@@ -84,7 +84,6 @@
             $customData->name = $data->name;
 			$customData->gmail = $data->gmail;
 			$customData->message = $data->message;
-
 
             $customData->status = getStatusText($data->status);
             $customData->hasLink = true;
@@ -130,8 +129,6 @@
 
         public function store(ContactRequest $request)
         {
-
-            // dd($request);
 
             DB::beginTransaction();
             try {

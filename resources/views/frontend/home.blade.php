@@ -524,7 +524,7 @@
                                     <li class="">
                                         <div
                                             class="mb-1 text-2xl font-semibold md:text-3xl number text-theme 2xl:text-4xl">
-                                            <span>18</span>
+                                            <span>01</span>
                                         </div>
                                         <div class="text-sm">Awards Won</div>
                                     </li>
@@ -1449,7 +1449,6 @@
                                             </button>
                                         </div>
                                     </form>
-
 
                                     <!-- Contact form end -->
                                 </div>
