@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Services\ContactService;
+use App\Services\Parsonal_InfoService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Exception;
@@ -12,18 +13,22 @@ use Exception;
 
 class HomeController extends Controller
 {
-    protected $contactService;
-    public function __construct(ContactService $contactService)
+    protected $contactService,$Parsonal_InfoService;
+    public function __construct(ContactService $contactService,Parsonal_InfoService $Parsonal_InfoService)
     {
         $this->contactService = $contactService;
+        $this->Parsonal_InfoService = $Parsonal_InfoService;
 
     }
 
     public function index()
     {
-        return view('frontend.home');
+        $parsonal_info = $this->Parsonal_InfoService->latest();
+        // dd($parsonal_info);
+        return view('frontend.home',compact('parsonal_info'));
+        // return view('frontend.home');
     }
-    
+
     public function contact(Request $request)
     {
         // Validate the request data

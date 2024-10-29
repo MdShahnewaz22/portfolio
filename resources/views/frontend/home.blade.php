@@ -47,16 +47,25 @@
                                 <img src="{{ asset('assets/frontend/assets/img/newaz.jpg') }}"
                                     class="hidden w-full h-full rounded-full dark:block" alt="Brown Reddick">
                                 <!--Image for Dark Version -->
-                                <img src="{{ asset('assets/frontend/assets/img/newaz.jpg') }}"
+                                {{-- <img src="{{ asset('assets/frontend/assets/img/newaz.jpg') }}"
+                                    class="w-full h-full rounded-full dark:hidden" alt="Brown Reddick"> --}}
+                                <img src="{{ $parsonal_info->image }}"
                                     class="w-full h-full rounded-full dark:hidden" alt="Brown Reddick">
                                 <!--Image for Light Version -->
                             </a>
-                            <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">Md.Shahnewaz</h6>
+                            {{-- <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">Md.Shahnewaz</h6> --}}
+
+                            <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">{{ $parsonal_info->name }}</h6>
+
+
+
+
                             <div class="leading-none cd-headline clip is-full-width">
                                 <h6 class="text-sm cd-words-wrapper designation text-theme after:!bg-theme">
-                                    <b class="font-normal is-visible">Web Developer</b>
-                                    <b class="font-normal">Software Enginner</b>
-                                    <b class="font-normal">Web Designer</b>
+                                    <b class="font-normal is-visible">{{ $parsonal_info->designation }}</b>
+                                    {{-- <b class="font-normal is-visible">Web Developer</b> --}}
+                                    {{-- <b class="font-normal">Software Enginner</b>
+                                    <b class="font-normal">Web Designer</b> --}}
                                 </h6>
                             </div>
                         </div>
@@ -66,15 +75,15 @@
 
                                 <li class="flex text-sm">
                                     <span class="flex-1 font-medium text-black dark:text-white">Residence:</span>
-                                    <span>Bangladesh</span>
+                                    <span>{{ $parsonal_info->residence }}</span>
                                 </li>
                                 <li class="flex text-sm">
                                     <span class="flex-1 font-medium text-black dark:text-white">City:</span>
-                                    <span>Dhaka</span>
+                                    <span>{{ $parsonal_info->city }}</span>
                                 </li>
                                 <li class="flex text-sm">
                                     <span class="flex-1 font-medium text-black dark:text-white">Age:</span>
-                                    <span>24</span>
+                                    <span>{{ $parsonal_info->age }}</span>
                                 </li>
                             </ul>
                         </div>

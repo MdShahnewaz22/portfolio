@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\Parsonal_InfoController;
+use App\Http\Controllers\Backend\SkillsController;
 //don't remove this comment from route namespace
 
 /*
@@ -65,5 +67,13 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 	Route::resource('contact', ContactController::class);
 	Route::get('contact/{id}/status/{status}/change', [ContactController::class, 'changeStatus'])->name('contact.status.change');
 
+	// for Parsonal_Info
+	Route::resource('parsonal_info', Parsonal_InfoController::class);
+	Route::get('parsonal_info/{id}/status/{status}/change', [Parsonal_InfoController::class, 'changeStatus'])->name('parsonal_info.status.change');
+
+	// for Skills
+	Route::resource('skills', SkillsController::class);
+	Route::get('skills/{id}/status/{status}/change', [SkillsController::class, 'changeStatus'])->name('skills.status.change');
+    
 	//don't remove this comment from route body
 });

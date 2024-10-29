@@ -27,11 +27,12 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
-          
+
             CompanySeeder::class,
 
             AdminSeeder::class,
-          
+            Parsonal_InfoSeeder::class,
+
         ]);
     }
 }

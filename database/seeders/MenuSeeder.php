@@ -185,6 +185,68 @@ class MenuSeeder extends Seeder
         ],
     ],
 
+    
+    [
+        "name" => "Parsonal_Info Manage",
+        "icon" => "aperture",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "Parsonal_Info-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "Parsonal_Info Add",
+                "icon" => "plus-circle",
+                "route" => "backend.parsonal_info.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "Parsonal_Info List",
+                "icon" => "list",
+                "route" => "backend.parsonal_info.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
+    
+    [
+        "name" => "Skills Manage",
+        "icon" => "aperture",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "Skills-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "Skills Add",
+                "icon" => "plus-circle",
+                "route" => "backend.skills.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "Skills List",
+                "icon" => "list",
+                "route" => "backend.skills.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
     //don't remove this comment from menu seeder
         ];
     }
