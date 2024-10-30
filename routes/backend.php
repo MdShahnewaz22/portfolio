@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\Parsonal_InfoController;
 use App\Http\Controllers\Backend\SkillsController;
+use App\Http\Controllers\Backend\AboutController;
 //don't remove this comment from route namespace
 
 /*
@@ -75,5 +76,9 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 	Route::resource('skills', SkillsController::class);
 	Route::get('skills/{id}/status/{status}/change', [SkillsController::class, 'changeStatus'])->name('skills.status.change');
     
+	// for About
+	Route::resource('about', AboutController::class);
+	Route::get('about/{id}/status/{status}/change', [AboutController::class, 'changeStatus'])->name('about.status.change');
+
 	//don't remove this comment from route body
 });

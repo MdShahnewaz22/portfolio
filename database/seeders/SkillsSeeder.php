@@ -24,6 +24,41 @@ class SkillsSeeder extends Seeder
     {
         return [
             // dummy data array will be here
+            [
+                'title' =>'HTML',
+                'percent' =>'90',
+                'image' =>'skill/newaz.jpg',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'CSS',
+                'percent' =>'80',
+                'image' =>'skill/newaz.jpg',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'JS',
+                'percent' =>'70',
+                'image' =>'skill/newaz.jpg',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'PHP',
+                'percent' =>'90',
+                'image' =>'skill/newaz.jpg',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'Laravel',
+                'percent' =>'70',
+                'image' =>'skill/newaz.jpg',
+                'file' =>'skill/cv.pdf',
+
+            ],
         ];
     }
 }

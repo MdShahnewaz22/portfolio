@@ -29,5 +29,10 @@ class Skills extends Model
         return (!is_null($value)) ? env('APP_URL') . '/public/storage/' . $value : null;
     }
 
+    public function getFileAttribute($value)
+    {
+        return (! is_null($value)) ? env('APP_URL').'/public/storage/'.$value : null;
+    }
+
 
 }

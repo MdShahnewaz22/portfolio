@@ -61,8 +61,8 @@ class SkillsRequest extends FormRequest
             'percent.required' => 'The percent field is required.',
             // 'image.required' => 'The image field is required.',
             // 'file.required' => 'The file field is required.',
-            'file.required' => 'The notice file field is required.',
-            'file.mimes' => 'The notice file field must be a file of type: xls,xlsx,doc,docx,pdf,ppt,pptx.',
+            'file.required' => 'The file field is required.',
+            'file.mimes' => 'The file field must be a file of type: xls,xlsx,doc,docx,pdf,ppt,pptx.',
 
 
         ];

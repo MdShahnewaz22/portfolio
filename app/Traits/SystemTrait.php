@@ -87,6 +87,17 @@ trait SystemTrait
         $image->storeAs($folder, $imageName, 'public');
         return $folder . '/' . $imageName;
     }
+    public function fileUpload($file, $folder)
+    {
+        $fileName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+        if (!Storage::disk('public')->exists($folder)) {
+            Storage::disk('public')->makeDirectory($folder);
+        }
+
+        $file->storeAs($folder, $fileName, 'public');
+        return $folder . '/' . $fileName;
+    }
 
     public function storeDescription($dataId,$referenceTable,$description)
     {

@@ -43,19 +43,21 @@
                         <div class="mx-4 mt-12 text-center user-info lg:mx-6">
                             <a class='w-36 h-36 mb-2.5 block mx-auto border-6 border-platinum dark:border-[#2f2f2f] overflow-hidden rounded-full'
                                 href='index.html'>
-                                <!-- <img src="{{ asset('assets/frontend/assets/img/user-sidebar-thumb.png') }}" -->
+                                {{-- <img src="{{ asset('assets/frontend/assets/img/user-sidebar-thumb.png') }} --}}
+
                                 <img src="{{ asset('assets/frontend/assets/img/newaz.jpg') }}"
                                     class="hidden w-full h-full rounded-full dark:block" alt="Brown Reddick">
                                 <!--Image for Dark Version -->
                                 {{-- <img src="{{ asset('assets/frontend/assets/img/newaz.jpg') }}"
                                     class="w-full h-full rounded-full dark:hidden" alt="Brown Reddick"> --}}
-                                <img src="{{ $parsonal_info->image }}"
-                                    class="w-full h-full rounded-full dark:hidden" alt="Brown Reddick">
+                                <img src="{{ $parsonal_info->image }}" class="w-full h-full rounded-full dark:hidden"
+                                    alt="Brown Reddick">
                                 <!--Image for Light Version -->
                             </a>
-                            {{-- <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">Md.Shahnewaz</h6> --}}
 
-                            <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">{{ $parsonal_info->name }}</h6>
+
+                            <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">
+                                {{ $parsonal_info->name }}</h6>
 
 
 
@@ -92,46 +94,57 @@
                         <div class="px-4 py-5 lg:py-6 lg:px-6 rounded-2xl md:px-8 bg-flashWhite dark:bg-metalBlack">
                             <div class="text-sm font-medium text-black dark:text-white">Skills</div>
                             <div class="flex items-center justify-between my-4 space-x-4 skills_circle">
-                                <div class="space-y-2 text-center progressCircle">
-                                    <div class="relative w-12 h-12 circle" data-percent="90">
-                                        <div class="absolute inset-0 text-[13px] font-medium label flex-center">90%</div>
+
+                                @foreach ($skills as $skill)
+                                    <div class="space-y-2 text-center progressCircle">
+                                        <div class="relative w-12 h-12 circle" data-percent="{{ $skill->percent }}">
+                                            {{-- <div class="absolute inset-0 text-[13px] font-medium label flex-center">100%</div> --}}
+                                            <div class="absolute inset-0 text-[13px] font-medium label flex-center">
+                                                {{ $skill->percent }}</div>
+                                        </div>
+                                        {{-- <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">HTML
+                                    </p> --}}
+                                        <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">
+                                            {{ $skill->title }}
+                                        </p>
                                     </div>
-                                    <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">HTML
-                                    </p>
-                                </div>
-                                <div class="space-y-2 text-center progressCircle">
+                                @endforeach
+
+                                {{-- <div class="space-y-2 text-center progressCircle">
                                     <div class="relative w-12 h-12 circle" data-percent="80">
                                         <div class="absolute inset-0 text-[13px] font-medium label flex-center">80%</div>
                                     </div>
                                     <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">CSS
                                     </p>
-                                </div>
+                                </div> --}}
 
 
 
-                                <div class="space-y-2 text-center progressCircle">
+                                {{-- <div class="space-y-2 text-center progressCircle">
                                     <div class="relative w-12 h-12 circle" data-percent="70">
                                         <div class="absolute inset-0 text-[13px] font-medium label flex-center">70%</div>
                                     </div>
                                     <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">JS</p>
-                                </div>
-                                <div class="space-y-2 text-center progressCircle">
+                                </div> --}}
+                                {{-- <div class="space-y-2 text-center progressCircle">
                                     <div class="relative w-12 h-12 circle" data-percent="90">
                                         <div class="absolute inset-0 text-[13px] font-medium label flex-center">90%</div>
                                     </div>
                                     <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">PHP
                                     </p>
-                                </div>
+                                </div> --}}
 
-                                <div class="space-y-2 text-center progressCircle">
+                                {{-- <div class="space-y-2 text-center progressCircle">
                                     <div class="relative w-12 h-12 circle" data-percent="70">
                                         <div class="absolute inset-0 text-[13px] font-medium label flex-center">70%</div>
                                     </div>
                                     <p class="text-[13px] font-normal dark:font-light text-black dark:text-white/90">Laravel
                                     </p>
-                                </div>
+                                </div> --}}
+
                             </div>
                             <div class="mt-6">
+
                                 <a href="https://drive.google.com/file/d/1qM0t0MUwtn7K-B2QHpfdi3UNLlsxNRks/view?usp=drive_link"
                                     download target="_blank"
                                     class="text-center text-sm border border-theme bg-theme flex items-center justify-center gap-2 text-white rounded-4xl py-3.5 transition duration-300 text-[15px] font-semibold hover:bg-themeHover hover:border-themeHover">
@@ -473,6 +486,10 @@
                                     <a href="#"
                                         class="inline-block px-3.5 py-2 transition duration-300 border border-dashed text-black dark:text-white/70 border-platinum dark:border-greyBlack rounded-3xl md:px-5 md: md:py-2 hover:text-theme dark:hover:text-white">
                                         Bootstrap (98%)
+                                    </a>
+                                    <a href="#"
+                                        class="inline-block px-3.5 py-2 transition duration-300 border border-dashed text-black dark:text-white/70 border-platinum dark:border-greyBlack rounded-3xl md:px-5 md: md:py-2 hover:text-theme dark:hover:text-white">
+                                        TailwindCSS (90%)
                                     </a>
                                     <a href="#"
                                         class="inline-block px-3.5 py-2 transition duration-300 border border-dashed text-black dark:text-white/70 border-platinum dark:border-greyBlack rounded-3xl md:px-5 md: md:py-2 hover:text-theme dark:hover:text-white">
@@ -974,8 +991,8 @@
                                                 BSc in Engineering <br> CSE
                                             </h4>
                                             <!-- <p>
-                                                Owing to advancements in product other designer technologies aute voluptate.
-                                            </p> -->
+                                                        Owing to advancements in product other designer technologies aute voluptate.
+                                                    </p> -->
                                         </div>
                                     </li>
                                     <li
@@ -996,8 +1013,8 @@
                                                 Higher Secondary School Certificate(HSC) <br> Science
                                             </h4>
                                             <!-- <p>
-                                                Owing to advancements in product other designer technologies aute voluptate.
-                                            </p> -->
+                                                        Owing to advancements in product other designer technologies aute voluptate.
+                                                    </p> -->
                                         </div>
                                     </li>
                                     <li
@@ -1018,8 +1035,8 @@
                                                 Secondary School Certificate (SSC) <br> Science
                                             </h4>
                                             <!-- <p>
-                                                Owing to advancements in product other designer technologies aute voluptate.
-                                            </p> -->
+                                                        Owing to advancements in product other designer technologies aute voluptate.
+                                                    </p> -->
                                         </div>
                                     </li>
                                 </ul>
@@ -1431,18 +1448,15 @@
                                         action="{{ route('frontend.contact') }}" method="post"> --}}
 
 
-                                    <form  class="space-y-4"
-                                        action="{{ route('frontend.contact') }}" method="post">
+                                    <form class="space-y-4" action="{{ route('frontend.contact') }}" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" name="name" id="name"
-                                                placeholder="Name"
+                                            <input type="text" name="name" id="name" placeholder="Name"
                                                 class="w-full p-5 text-sm outline-none h-13 focus:border-theme dark:focus:border-theme dark:placeholder:text-white/40"
                                                 required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" name="gmail" id="email"
-                                                placeholder="E-Mail"
+                                            <input type="email" name="gmail" id="email" placeholder="E-Mail"
                                                 class="w-full p-5 text-sm outline-none h-13 focus:border-theme dark:focus:border-theme dark:placeholder:text-white/40"
                                                 required>
                                         </div>

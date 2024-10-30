@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Parsonal_Info extends Model
+class About extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','designation','residence','city','age','image', 'status','created_at','updated_at','deleted_at'];
+    protected $fillable = ['phone','gmail','github','skype','language','years_experience','handled_project','open_source','awards','description', 'status','created_at','updated_at','deleted_at'];
 
     protected static function boot()
     {
@@ -23,12 +23,5 @@ class Parsonal_Info extends Model
         });
     }
 
-    public function getImageAttribute($value)
-    {
-
-        return (!is_null($value)) ? env('APP_URL') . '/public/storage/' . $value : null;
-    }
-
-
-
+    
 }

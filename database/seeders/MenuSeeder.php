@@ -247,6 +247,37 @@ class MenuSeeder extends Seeder
         ],
     ],
 
+    
+    [
+        "name" => "About Manage",
+        "icon" => "aperture",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "About-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "About Add",
+                "icon" => "plus-circle",
+                "route" => "backend.about.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "About List",
+                "icon" => "list",
+                "route" => "backend.about.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
     //don't remove this comment from menu seeder
         ];
     }

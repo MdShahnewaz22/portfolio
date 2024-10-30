@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
 
             AdminSeeder::class,
             Parsonal_InfoSeeder::class,
+            SkillsSeeder::class,
 
         ]);
     }

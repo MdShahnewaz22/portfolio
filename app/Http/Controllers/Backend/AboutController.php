@@ -2,9 +2,9 @@
     namespace App\Http\Controllers\Backend;
 
     use App\Http\Controllers\Controller;
-    use App\Http\Requests\SkillsRequest;
+    use App\Http\Requests\AboutRequest;
     use Illuminate\Support\Facades\DB;
-    use App\Services\SkillsService;
+    use App\Services\AboutService;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
     use Illuminate\Support\Facades\Schema;
@@ -12,26 +12,26 @@
     use App\Traits\SystemTrait;
     use Exception;
 
-    class SkillsController extends Controller
+    class AboutController extends Controller
     {
         use SystemTrait;
 
-        protected $skillsService;
+        protected $aboutService;
 
-        public function __construct(SkillsService $skillsService)
+        public function __construct(AboutService $aboutService)
         {
-            $this->skillsService = $skillsService;
+            $this->aboutService = $aboutService;
         }
 
         public function index()
         {
             return Inertia::render(
-                'Backend/Skills/Index',
+                'Backend/About/Index',
                 [
-                    'pageTitle' => fn () => 'Skills List',
+                    'pageTitle' => fn () => 'About List',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Skills Manage'],
-                        ['link' => route('backend.skills.index'), 'title' => 'Skills List'],
+                        ['link' => null, 'title' => 'About Manage'],
+                        ['link' => route('backend.about.index'), 'title' => 'About List'],
                     ],
                     'tableHeaders' => fn () => $this->getTableHeaders(),
                     'dataFields' => fn () => $this->getDataFields(),
@@ -44,10 +44,16 @@
     {
         return [
             ['fieldName' => 'index', 'class' => 'text-center'],
-            ['fieldName' => 'title', 'class' => 'text-center'],
-			['fieldName' => 'percent', 'class' => 'text-center'],
-			['fieldName' => 'image', 'class' => 'text-center'],
-			['fieldName' => 'file', 'class' => 'text-center'],
+            ['fieldName' => 'phone', 'class' => 'text-center'],
+			['fieldName' => 'gmail', 'class' => 'text-center'],
+			['fieldName' => 'github', 'class' => 'text-center'],
+			['fieldName' => 'skype', 'class' => 'text-center'],
+			['fieldName' => 'language', 'class' => 'text-center'],
+			['fieldName' => 'years_experience', 'class' => 'text-center'],
+			['fieldName' => 'handled_project', 'class' => 'text-center'],
+			['fieldName' => 'open_source', 'class' => 'text-center'],
+			['fieldName' => 'awards', 'class' => 'text-center'],
+			['fieldName' => 'description', 'class' => 'text-center'],
             ['fieldName' => 'status', 'class' => 'text-center'],
         ];
     }
@@ -55,10 +61,16 @@
     {
         return [
             'Sl/No',
-            'Title',
-			'Percent',
-			'Image',
-			'File',
+            'Phone',
+			'Gmail',
+			'Github',
+			'Skype',
+			'Language',
+			'Years Experience',
+			'Handled Project',
+			'Open Source',
+			'Awards',
+			'Description',
             'Status',
             'Action'
         ];
@@ -66,19 +78,37 @@
 
     private function getDatas()
     {
-        $query = $this->skillsService->list();
+        $query = $this->aboutService->list();
 
-        if(request()->filled('title'))
-				$query->where('title', 'like', request()->title .'%');
+        if(request()->filled('phone'))
+				$query->where('phone', 'like', request()->phone .'%');
 
-			if(request()->filled('percent'))
-				$query->where('percent', 'like', request()->percent .'%');
+			if(request()->filled('gmail'))
+				$query->where('gmail', 'like', request()->gmail .'%');
 
-			if(request()->filled('image'))
-				$query->where('image', 'like', request()->image .'%');
+			if(request()->filled('github'))
+				$query->where('github', 'like', request()->github .'%');
 
-			if(request()->filled('file'))
-				$query->where('file', 'like', request()->file .'%');
+			if(request()->filled('skype'))
+				$query->where('skype', 'like', request()->skype .'%');
+
+			if(request()->filled('language'))
+				$query->where('language', 'like', request()->language .'%');
+
+			if(request()->filled('years_experience'))
+				$query->where('years_experience', 'like', request()->years_experience .'%');
+
+			if(request()->filled('handled_project'))
+				$query->where('handled_project', 'like', request()->handled_project .'%');
+
+			if(request()->filled('open_source'))
+				$query->where('open_source', 'like', request()->open_source .'%');
+
+			if(request()->filled('awards'))
+				$query->where('awards', 'like', request()->awards .'%');
+
+			if(request()->filled('description'))
+				$query->where('description', 'like', request()->description .'%');
 
         $datas = $query->paginate(request()->numOfData ?? 10)->withQueryString();
 
@@ -86,13 +116,17 @@
             $customData = new \stdClass();
             $customData->index = $index + 1;
 
-            $customData->title = $data->title;
-			$customData->percent = $data->percent;
-			// $customData->image = $data->image;
-            $customData->image = '<img src="' . $data->image . '" height="60" width="70"/>';
-			// $customData->file = $data->file;
-            $customData->file ='<br> <a href="' . strstr($data->file, '/storage/') . '" target="_blank"><span class="font-bold text-green-600">Show</span></a>';
-
+            $customData->phone = $data->phone;
+			$customData->gmail = $data->gmail;
+			$customData->github = $data->github;
+			$customData->skype = $data->skype;
+			$customData->language = $data->language;
+			$customData->years_experience = $data->years_experience;
+			$customData->handled_project = $data->handled_project;
+			$customData->open_source = $data->open_source;
+			$customData->awards = $data->awards;
+			$customData->description = $data->description;
+			
 
             $customData->status = getStatusText($data->status);
             $customData->hasLink = true;
@@ -100,18 +134,18 @@
 
                   [
                     'linkClass' => 'semi-bold text-white statusChange ' . (($data->status == 'Active') ? "bg-gray-500" : "bg-green-500"),
-                    'link' => route('backend.skills.status.change', ['id' => $data->id, 'status' => $data->status == 'Active' ? 'Inactive' : 'Active']),
+                    'link' => route('backend.about.status.change', ['id' => $data->id, 'status' => $data->status == 'Active' ? 'Inactive' : 'Active']),
                     'linkLabel' => getLinkLabel((($data->status == 'Active') ? "Inactive" : "Active"), null, null)
                 ],
 
                 [
                     'linkClass' => 'bg-yellow-400 text-black semi-bold',
-                    'link' => route('backend.skills.edit', $data->id),
+                    'link' => route('backend.about.edit', $data->id),
                     'linkLabel' => getLinkLabel('Edit', null, null)
                 ],
                 [
                     'linkClass' => 'deleteButton bg-red-500 text-white semi-bold',
-                    'link' => route('backend.skills.destroy', $data->id),
+                    'link' => route('backend.about.destroy', $data->id),
                     'linkLabel' => getLinkLabel('Delete', null, null)
                 ]
             ];
@@ -124,19 +158,19 @@
         public function create()
         {
             return Inertia::render(
-                'Backend/Skills/Form',
+                'Backend/About/Form',
                 [
-                    'pageTitle' => fn () => 'Skills Create',
+                    'pageTitle' => fn () => 'About Create',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Skills Manage'],
-                        ['link' => route('backend.skills.create'), 'title' => 'Skills Create'],
+                        ['link' => null, 'title' => 'About Manage'],
+                        ['link' => route('backend.about.create'), 'title' => 'About Create'],
                     ],
                 ]
             );
         }
 
 
-        public function store(SkillsRequest $request)
+        public function store(AboutRequest $request)
         {
 
             DB::beginTransaction();
@@ -144,21 +178,11 @@
 
                 $data = $request->validated();
 
-
-
-                if ($request->hasFile('image'))
-                $data['image'] = $this->imageUpload($request->file('image'), 'skill');
-
-                if ($request->hasFile('file'))
-                $data['file'] = $this->fileUpload($request->file('file'), 'skill');
-
-
-
-                $dataInfo = $this->skillsService->create($data);
+                $dataInfo = $this->aboutService->create($data);
 
                 if ($dataInfo) {
-                    $message = 'Skills created successfully';
-                    $this->storeAdminWorkLog($dataInfo->id, 'skills', $message);
+                    $message = 'About created successfully';
+                    $this->storeAdminWorkLog($dataInfo->id, 'abouts', $message);
 
                     DB::commit();
 
@@ -168,7 +192,7 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To create Skills.";
+                    $message = "Failed To create About.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
@@ -176,7 +200,7 @@
             } catch (Exception $err) {
 
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'SkillsController', 'store', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'AboutController', 'store', substr($err->getMessage(), 0, 1000));
 
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
@@ -189,44 +213,36 @@
 
         public function edit($id)
         {
-            $skills = $this->skillsService->find($id);
+            $about = $this->aboutService->find($id);
 
             return Inertia::render(
-                'Backend/Skills/Form',
+                'Backend/About/Form',
                 [
-                    'pageTitle' => fn () => 'Skills Edit',
+                    'pageTitle' => fn () => 'About Edit',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Skills Manage'],
-                        ['link' => route('backend.skills.edit', $id), 'title' => 'Skills Edit'],
+                        ['link' => null, 'title' => 'About Manage'],
+                        ['link' => route('backend.about.edit', $id), 'title' => 'About Edit'],
                     ],
-                    'skills' => fn () => $skills,
+                    'about' => fn () => $about,
                     'id' => fn () => $id,
                 ]
             );
         }
 
-        public function update(SkillsRequest $request, $id)
+        public function update(AboutRequest $request, $id)
         {
             DB::beginTransaction();
             try {
 
                 $data = $request->validated();
-
-                if ($request->hasFile('image'))
-                $data['image'] = $this->imageUpload($request->file('image'), 'skill');
-
-                if ($request->hasFile('file'))
-                $data['file'] = $this->fileUpload($request->file('file'), 'skill');
+                $About = $this->aboutService->find($id);
 
 
-                $Skills = $this->skillsService->find($id);
-
-
-                $dataInfo = $this->skillsService->update($data, $id);
+                $dataInfo = $this->aboutService->update($data, $id);
 
                 if ($dataInfo->save()) {
-                    $message = 'Skills updated successfully';
-                    $this->storeAdminWorkLog($dataInfo->id, 'skills', $message);
+                    $message = 'About updated successfully';
+                    $this->storeAdminWorkLog($dataInfo->id, 'abouts', $message);
 
                     DB::commit();
 
@@ -236,14 +252,14 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To update Skills.";
+                    $message = "Failed To update About.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
                 }
             } catch (Exception $err) {
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'Skillscontroller', 'update', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'Aboutcontroller', 'update', substr($err->getMessage(), 0, 1000));
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
                 return redirect()
@@ -259,9 +275,9 @@
 
             try {
 
-                if ($this->skillsService->delete($id)) {
-                    $message = 'Skills deleted successfully';
-                    $this->storeAdminWorkLog($id, 'skills', $message);
+                if ($this->aboutService->delete($id)) {
+                    $message = 'About deleted successfully';
+                    $this->storeAdminWorkLog($id, 'abouts', $message);
 
                     DB::commit();
 
@@ -271,14 +287,14 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To Delete Skills.";
+                    $message = "Failed To Delete About.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
                 }
             } catch (Exception $err) {
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'Skillscontroller', 'destroy', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'Aboutcontroller', 'destroy', substr($err->getMessage(), 0, 1000));
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
                 return redirect()
@@ -292,11 +308,11 @@
         DB::beginTransaction();
 
         try {
-            $dataInfo = $this->skillsService->changeStatus(request());
+            $dataInfo = $this->aboutService->changeStatus(request());
 
             if ($dataInfo->wasChanged()) {
-                $message = 'Skills ' . request()->status . ' Successfully';
-                $this->storeAdminWorkLog($dataInfo->id, 'skills', $message);
+                $message = 'About ' . request()->status . ' Successfully';
+                $this->storeAdminWorkLog($dataInfo->id, 'abouts', $message);
 
                 DB::commit();
 
@@ -306,14 +322,14 @@
             } else {
                 DB::rollBack();
 
-                $message = "Failed To " . request()->status . " Skills.";
+                $message = "Failed To " . request()->status . " About.";
                 return redirect()
                     ->back()
                     ->with('errorMessage', $message);
             }
         } catch (Exception $err) {
             DB::rollBack();
-            $this->storeSystemError('Backend', 'SkillsController', 'changeStatus', substr($err->getMessage(), 0, 1000));
+            $this->storeSystemError('Backend', 'AboutController', 'changeStatus', substr($err->getMessage(), 0, 1000));
             DB::commit();
             $message = "Server Errors Occur. Please Try Again.";
             return redirect()
@@ -321,6 +337,4 @@
                 ->withErrors( ['error'=>$message]);
         }
     }
-
-
 }

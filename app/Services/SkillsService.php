@@ -20,8 +20,14 @@ class SkillsService
 
     public function all()
     {
-        return $this->skillsModel->whereNull('deleted_at')->all();
+        return $this->skillsModel->whereNull('deleted_at')->get();
     }
+
+    // public function latest()
+    // {
+    //     return $this->skillsModel->whereNull('deleted_at')->latest()->firstOrFail();
+    // }
+
 
     public function find($id)
     {
