@@ -2,9 +2,9 @@
     namespace App\Http\Controllers\Backend;
 
     use App\Http\Controllers\Controller;
-    use App\Http\Requests\SkillsRequest;
+    use App\Http\Requests\WorkExperienceRequest;
     use Illuminate\Support\Facades\DB;
-    use App\Services\SkillsService;
+    use App\Services\WorkExperienceService;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
     use Illuminate\Support\Facades\Schema;
@@ -12,26 +12,26 @@
     use App\Traits\SystemTrait;
     use Exception;
 
-    class SkillsController extends Controller
+    class WorkExperienceController extends Controller
     {
         use SystemTrait;
 
-        protected $skillsService;
+        protected $workexperienceService;
 
-        public function __construct(SkillsService $skillsService)
+        public function __construct(WorkExperienceService $workexperienceService)
         {
-            $this->skillsService = $skillsService;
+            $this->workexperienceService = $workexperienceService;
         }
 
         public function index()
         {
             return Inertia::render(
-                'Backend/Skills/Index',
+                'Backend/WorkExperience/Index',
                 [
-                    'pageTitle' => fn () => 'Skills List',
+                    'pageTitle' => fn () => 'Work Experience List',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Skills Manage'],
-                        ['link' => route('backend.skills.index'), 'title' => 'Skills List'],
+                        ['link' => null, 'title' => 'Work Experience Manage'],
+                        ['link' => route('backend.workexperience.index'), 'title' => 'Work Experience List'],
                     ],
                     'tableHeaders' => fn () => $this->getTableHeaders(),
                     'dataFields' => fn () => $this->getDataFields(),
@@ -44,10 +44,10 @@
     {
         return [
             ['fieldName' => 'index', 'class' => 'text-center'],
-            ['fieldName' => 'title', 'class' => 'text-center'],
-			['fieldName' => 'percent', 'class' => 'text-center'],
-			['fieldName' => 'image', 'class' => 'text-center'],
-			['fieldName' => 'file', 'class' => 'text-center'],
+            ['fieldName' => 'company_name', 'class' => 'text-center'],
+			['fieldName' => 'year_to_year', 'class' => 'text-center'],
+			['fieldName' => 'designation', 'class' => 'text-center'],
+			['fieldName' => 'description', 'class' => 'text-center'],
             ['fieldName' => 'status', 'class' => 'text-center'],
         ];
     }
@@ -55,10 +55,10 @@
     {
         return [
             'Sl/No',
-            'Title',
-			'Percent',
-			'Image',
-			'File',
+            'Company Name',
+			'Year To Year',
+			'Designation',
+			'Description',
             'Status',
             'Action'
         ];
@@ -66,19 +66,19 @@
 
     private function getDatas()
     {
-        $query = $this->skillsService->list();
+        $query = $this->workexperienceService->list();
 
-        if(request()->filled('title'))
-				$query->where('title', 'like','%'. request()->title .'%');
+        if(request()->filled('company_name'))
+				$query->where('company_name', 'like','%'. request()->company_name .'%');
 
-			if(request()->filled('percent'))
-				$query->where('percent', 'like', request()->percent .'%');
+			if(request()->filled('year_to_year'))
+				$query->where('year_to_year', 'like', request()->year_to_year .'%');
 
-			if(request()->filled('image'))
-				$query->where('image', 'like', request()->image .'%');
+			if(request()->filled('designation'))
+				$query->where('designation', 'like', request()->designation .'%');
 
-			if(request()->filled('file'))
-				$query->where('file', 'like', request()->file .'%');
+			if(request()->filled('description'))
+				$query->where('description', 'like', request()->description .'%');
 
         $datas = $query->paginate(request()->numOfData ?? 10)->withQueryString();
 
@@ -86,12 +86,10 @@
             $customData = new \stdClass();
             $customData->index = $index + 1;
 
-            $customData->title = $data->title;
-			$customData->percent = $data->percent;
-			// $customData->image = $data->image;
-            $customData->image = '<img src="' . $data->image . '" height="60" width="70"/>';
-			// $customData->file = $data->file;
-            $customData->file ='<br> <a href="' . strstr($data->file, '/storage/') . '" target="_blank"><span class="font-bold text-green-600">Show</span></a>';
+            $customData->company_name = $data->company_name;
+			$customData->year_to_year = $data->year_to_year;
+			$customData->designation = $data->designation;
+			$customData->description = $data->description;
 
 
             $customData->status = getStatusText($data->status);
@@ -100,18 +98,18 @@
 
                   [
                     'linkClass' => 'semi-bold text-white statusChange ' . (($data->status == 'Active') ? "bg-gray-500" : "bg-green-500"),
-                    'link' => route('backend.skills.status.change', ['id' => $data->id, 'status' => $data->status == 'Active' ? 'Inactive' : 'Active']),
+                    'link' => route('backend.workexperience.status.change', ['id' => $data->id, 'status' => $data->status == 'Active' ? 'Inactive' : 'Active']),
                     'linkLabel' => getLinkLabel((($data->status == 'Active') ? "Inactive" : "Active"), null, null)
                 ],
 
                 [
                     'linkClass' => 'bg-yellow-400 text-black semi-bold',
-                    'link' => route('backend.skills.edit', $data->id),
+                    'link' => route('backend.workexperience.edit', $data->id),
                     'linkLabel' => getLinkLabel('Edit', null, null)
                 ],
                 [
                     'linkClass' => 'deleteButton bg-red-500 text-white semi-bold',
-                    'link' => route('backend.skills.destroy', $data->id),
+                    'link' => route('backend.workexperience.destroy', $data->id),
                     'linkLabel' => getLinkLabel('Delete', null, null)
                 ]
             ];
@@ -124,19 +122,19 @@
         public function create()
         {
             return Inertia::render(
-                'Backend/Skills/Form',
+                'Backend/WorkExperience/Form',
                 [
-                    'pageTitle' => fn () => 'Skills Create',
+                    'pageTitle' => fn () => 'Work Experience Create',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Skills Manage'],
-                        ['link' => route('backend.skills.create'), 'title' => 'Skills Create'],
+                        ['link' => null, 'title' => 'Work Experience Manage'],
+                        ['link' => route('backend.workexperience.create'), 'title' => 'Work Experience Create'],
                     ],
                 ]
             );
         }
 
 
-        public function store(SkillsRequest $request)
+        public function store(WorkExperienceRequest $request)
         {
 
             DB::beginTransaction();
@@ -144,21 +142,11 @@
 
                 $data = $request->validated();
 
-
-
-                if ($request->hasFile('image'))
-                $data['image'] = $this->imageUpload($request->file('image'), 'skill');
-
-                if ($request->hasFile('file'))
-                $data['file'] = $this->fileUpload($request->file('file'), 'skill');
-
-
-
-                $dataInfo = $this->skillsService->create($data);
+                $dataInfo = $this->workexperienceService->create($data);
 
                 if ($dataInfo) {
-                    $message = 'Skills created successfully';
-                    $this->storeAdminWorkLog($dataInfo->id, 'skills', $message);
+                    $message = 'Work Experience created successfully';
+                    $this->storeAdminWorkLog($dataInfo->id, 'work_experiences', $message);
 
                     DB::commit();
 
@@ -168,7 +156,7 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To create Skills.";
+                    $message = "Failed To create Work Experience.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
@@ -176,7 +164,7 @@
             } catch (Exception $err) {
 
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'SkillsController', 'store', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'WorkExperienceController', 'store', substr($err->getMessage(), 0, 1000));
 
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
@@ -189,44 +177,36 @@
 
         public function edit($id)
         {
-            $skills = $this->skillsService->find($id);
+            $workexperience = $this->workexperienceService->find($id);
 
             return Inertia::render(
-                'Backend/Skills/Form',
+                'Backend/WorkExperience/Form',
                 [
-                    'pageTitle' => fn () => 'Skills Edit',
+                    'pageTitle' => fn () => 'Work Experience Edit',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Skills Manage'],
-                        ['link' => route('backend.skills.edit', $id), 'title' => 'Skills Edit'],
+                        ['link' => null, 'title' => 'Work Experience Manage'],
+                        ['link' => route('backend.workexperience.edit', $id), 'title' => 'Work Experience Edit'],
                     ],
-                    'skills' => fn () => $skills,
+                    'workexperience' => fn () => $workexperience,
                     'id' => fn () => $id,
                 ]
             );
         }
 
-        public function update(SkillsRequest $request, $id)
+        public function update(WorkExperienceRequest $request, $id)
         {
             DB::beginTransaction();
             try {
 
                 $data = $request->validated();
-
-                if ($request->hasFile('image'))
-                $data['image'] = $this->imageUpload($request->file('image'), 'skill');
-
-                if ($request->hasFile('file'))
-                $data['file'] = $this->fileUpload($request->file('file'), 'skill');
+                $WorkExperience = $this->workexperienceService->find($id);
 
 
-                $Skills = $this->skillsService->find($id);
-
-
-                $dataInfo = $this->skillsService->update($data, $id);
+                $dataInfo = $this->workexperienceService->update($data, $id);
 
                 if ($dataInfo->save()) {
-                    $message = 'Skills updated successfully';
-                    $this->storeAdminWorkLog($dataInfo->id, 'skills', $message);
+                    $message = 'Work Experience updated successfully';
+                    $this->storeAdminWorkLog($dataInfo->id, 'work_experiences', $message);
 
                     DB::commit();
 
@@ -236,14 +216,14 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To update Skills.";
+                    $message = "Failed To update Work Experience.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
                 }
             } catch (Exception $err) {
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'Skillscontroller', 'update', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'WorkExperiencecontroller', 'update', substr($err->getMessage(), 0, 1000));
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
                 return redirect()
@@ -259,9 +239,9 @@
 
             try {
 
-                if ($this->skillsService->delete($id)) {
-                    $message = 'Skills deleted successfully';
-                    $this->storeAdminWorkLog($id, 'skills', $message);
+                if ($this->workexperienceService->delete($id)) {
+                    $message = 'Work Experience deleted successfully';
+                    $this->storeAdminWorkLog($id, 'work_experiences', $message);
 
                     DB::commit();
 
@@ -271,14 +251,14 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To Delete Skills.";
+                    $message = "Failed To Delete Work Experience.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
                 }
             } catch (Exception $err) {
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'Skillscontroller', 'destroy', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'WorkExperiencecontroller', 'destroy', substr($err->getMessage(), 0, 1000));
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
                 return redirect()
@@ -292,11 +272,11 @@
         DB::beginTransaction();
 
         try {
-            $dataInfo = $this->skillsService->changeStatus(request());
+            $dataInfo = $this->workexperienceService->changeStatus(request());
 
             if ($dataInfo->wasChanged()) {
-                $message = 'Skills ' . request()->status . ' Successfully';
-                $this->storeAdminWorkLog($dataInfo->id, 'skills', $message);
+                $message = 'Work Experience ' . request()->status . ' Successfully';
+                $this->storeAdminWorkLog($dataInfo->id, 'work_experiences', $message);
 
                 DB::commit();
 
@@ -306,14 +286,14 @@
             } else {
                 DB::rollBack();
 
-                $message = "Failed To " . request()->status . " Skills.";
+                $message = "Failed To " . request()->status . " WorkExperience.";
                 return redirect()
                     ->back()
                     ->with('errorMessage', $message);
             }
         } catch (Exception $err) {
             DB::rollBack();
-            $this->storeSystemError('Backend', 'SkillsController', 'changeStatus', substr($err->getMessage(), 0, 1000));
+            $this->storeSystemError('Backend', 'WorkExperienceController', 'changeStatus', substr($err->getMessage(), 0, 1000));
             DB::commit();
             $message = "Server Errors Occur. Please Try Again.";
             return redirect()
@@ -321,6 +301,4 @@
                 ->withErrors( ['error'=>$message]);
         }
     }
-
-
 }

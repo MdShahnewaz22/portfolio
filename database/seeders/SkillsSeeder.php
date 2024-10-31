@@ -27,35 +27,56 @@ class SkillsSeeder extends Seeder
             [
                 'title' =>'HTML',
                 'percent' =>'90',
-                'image' =>'skill/newaz.jpg',
+                'image' =>'skill/html.png',
                 'file' =>'skill/cv.pdf',
 
             ],
             [
                 'title' =>'CSS',
                 'percent' =>'80',
-                'image' =>'skill/newaz.jpg',
+                'image' =>'skill/css.png',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'Tailwind',
+                'percent' =>'80',
+                'image' =>'skill/tailwind.png',
                 'file' =>'skill/cv.pdf',
 
             ],
             [
                 'title' =>'JS',
                 'percent' =>'70',
-                'image' =>'skill/newaz.jpg',
+                'image' =>'skill/js.png',
                 'file' =>'skill/cv.pdf',
 
             ],
             [
                 'title' =>'PHP',
                 'percent' =>'90',
-                'image' =>'skill/newaz.jpg',
+                'image' =>'skill/php.png',
                 'file' =>'skill/cv.pdf',
 
             ],
             [
                 'title' =>'Laravel',
                 'percent' =>'70',
-                'image' =>'skill/newaz.jpg',
+                'image' =>'skill/laravel.png',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'Vue Js',
+                'percent' =>'70',
+                'image' =>'skill/vuejs.png',
+                'file' =>'skill/cv.pdf',
+
+            ],
+            [
+                'title' =>'MYSQL',
+                'percent' =>'75',
+                'image' =>'skill/mysql.png',
                 'file' =>'skill/cv.pdf',
 
             ],

@@ -27,6 +27,15 @@ class SkillsService
     // {
     //     return $this->skillsModel->whereNull('deleted_at')->latest()->firstOrFail();
     // }
+    public function latest()
+    {
+        return $this->skillsModel
+            ->whereNull('deleted_at')
+            ->latest()
+            ->take(5) // Limit to 5 records
+            ->get();  // Retrieve all 5 records
+    }
+
 
 
     public function find($id)
@@ -76,5 +85,4 @@ class SkillsService
     {
         return $this->skillsModel->whereNull('deleted_at')->where('status', 'Active')->get();
     }
-
 }

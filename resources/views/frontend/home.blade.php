@@ -57,7 +57,7 @@
 
 
                             <h6 class="mb-1 text-lg font-semibold text-black dark:text-white name">
-                                {{ $parsonal_info->name }}</h6>
+                            </h6>
 
 
 
@@ -470,11 +470,14 @@
                                     class="title text-[32px] md:text-4xl lg:text-5xl font-extralight text-black dark:text-white leading-1.27">
                                     About <span class="font-semibold text-theme">Me</span>
                                 </h2>
-                                <p class="max-w-2xl mt-4 md:mt-6 subtitle">
+                                {{-- <p class="max-w-2xl mt-4 md:mt-6 subtitle">
                                     Hi, my name is <span class="text-black dark:text-white">Md.Shahnewaz</span> and I
                                     began using WordPress when first began. spent most of my waking hours for the last ten
                                     years designing, programming and operating <span class="text-black dark:text-white">
                                         WordPress</span> sites go beyond with exclusive designer.
+                                </p> --}}
+                                <p style="text-align: justify;" class="max-w-2xl mt-4 md:mt-6 subtitle">
+                                    {{ $about->description }}
                                 </p>
                             </div>
                             <div class="mt-6 section-content">
@@ -485,7 +488,7 @@
                                     </a>
                                     <a href="#"
                                         class="inline-block px-3.5 py-2 transition duration-300 border border-dashed text-black dark:text-white/70 border-platinum dark:border-greyBlack rounded-3xl md:px-5 md: md:py-2 hover:text-theme dark:hover:text-white">
-                                        Bootstrap (98%)
+                                        Bootstrap (85%)
                                     </a>
                                     <a href="#"
                                         class="inline-block px-3.5 py-2 transition duration-300 border border-dashed text-black dark:text-white/70 border-platinum dark:border-greyBlack rounded-3xl md:px-5 md: md:py-2 hover:text-theme dark:hover:text-white">
@@ -501,27 +504,33 @@
                                     <li class="flex items-center">
                                         <span class="flex-[0_0_6rem]">Phone</span>
                                         <span class="flex-[0_0_2rem]">:</span>
-                                        <span class="text-black dark:text-white">01785915418</span>
+                                        {{-- <span class="text-black dark:text-white">01785915418</span> --}}
+                                        <span class="text-black dark:text-white">{{ $about->phone }}</span>
                                     </li>
                                     <li class="flex items-center">
                                         <span class="flex-[0_0_6rem]">Gmail</span>
                                         <span class="flex-[0_0_2rem]">:</span>
-                                        <span class="text-black dark:text-white">mdshahnewaz77@gmail.com</span>
+                                        {{-- <span class="text-black dark:text-white">mdshahnewaz77@gmail.com</span> --}}
+                                        <span class="text-black dark:text-white">{{ $about->gmail }}</span>
                                     </li>
                                     <li class="flex items-center">
                                         <span class="flex-[0_0_6rem]">Skype</span>
                                         <span class="flex-[0_0_2rem]">:</span>
-                                        <span class="text-black dark:text-white">brown@com</span>
+                                        {{-- <span class="text-black dark:text-white">brown@com</span> --}}
+                                        <span class="text-black dark:text-white">{{ $about->skype }}</span>
                                     </li>
                                     <li class="flex items-center">
                                         <span class="flex-[0_0_6rem]">Github</span>
                                         <span class="flex-[0_0_2rem]">:</span>
-                                        <span class="text-black dark:text-white">github.com/user</span>
+                                        {{-- <span class="text-black dark:text-white">github.com/user</span> --}}
+                                        <span class="text-black dark:text-white"><u
+                                                style="color: blue;">{{ $about->github }}</u></span>
                                     </li>
                                     <li class="flex items-center">
                                         <span class="flex-[0_0_6rem]">Language</span>
                                         <span class="flex-[0_0_2rem]">:</span>
-                                        <span class="text-black dark:text-white">Bangla,English.</span>
+                                        {{-- <span class="text-black dark:text-white">Bangla,English.</span> --}}
+                                        <span class="text-black dark:text-white">{{ $about->language }}</span>
                                     </li>
                                 </ul>
 
@@ -529,28 +538,32 @@
                                     <li class="">
                                         <div
                                             class="mb-1 text-2xl font-semibold md:text-3xl number text-theme 2xl:text-4xl">
-                                            <span>1</span>+
+                                            {{-- <span>1</span>+ --}}
+                                            <span>{{ $about->years_experience }}</span>+
                                         </div>
                                         <div class="text-sm">Years Of Experience</div>
                                     </li>
                                     <li class="">
                                         <div
                                             class="mb-1 text-2xl font-semibold md:text-3xl number text-theme 2xl:text-4xl">
-                                            <span>12</span>+
+                                            {{-- <span>12</span>+ --}}
+                                            <span>{{ $about->handled_project }}</span>+
                                         </div>
                                         <div class="text-sm">Handled Projects</div>
                                     </li>
                                     <li class="">
                                         <div
                                             class="mb-1 text-2xl font-semibold md:text-3xl number text-theme 2xl:text-4xl">
-                                            <span>05</span>+
+                                            {{-- <span>05</span>+ --}}
+                                            <span>{{ $about->open_source }}</span>+
                                         </div>
                                         <div class="text-sm">Open Source Libraries</div>
                                     </li>
                                     <li class="">
                                         <div
                                             class="mb-1 text-2xl font-semibold md:text-3xl number text-theme 2xl:text-4xl">
-                                            <span>01</span>
+                                            {{-- <span>01</span> --}}
+                                            <span>{{ $about->awards }}</span>
                                         </div>
                                         <div class="text-sm">Awards Won</div>
                                     </li>
@@ -754,7 +767,29 @@
                                             </div>
                                             <div class="text-black dark:text-white name">Weblfow</div>
                                         </div> --}}
+                                        @foreach ($Advantages as $Advantage)
+
+
                                         <div class="space-y-5 text-center swiper-slide">
+                                            <div class="text-center icon">
+                                                {{-- <img src="{{ asset('/assets/frontend/assets/img/skill/tailwind.svg') }}" --}}
+                                                <img style="max-width: 40%;" src="{{$Advantage->image}}"
+                                                    class="dark:grayscale" alt="TailwindCSS">
+                                            </div>
+                                            <div class="progressCircle">
+                                                <div class="relative w-32 h-32 mx-auto circle md:w-40 md:h-40"
+                                                    data-percent="{{$Advantage->percent}}">
+                                                    <div
+                                                        class="absolute inset-0 text-2xl font-semibold text-black dark:text-white label flex-center">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="text-black dark:text-white name">Tailwind</div> --}}
+                                            <div class="text-black dark:text-white name">{{$Advantage->title}}</div>
+                                        </div>
+                                        @endforeach
+
+                                        {{-- <div class="space-y-5 text-center swiper-slide">
                                             <div class="text-center icon">
                                                 <img src="{{ asset('/assets/frontend/assets/img/skill/tailwind.svg') }}"
                                                     class="dark:grayscale" alt="TailwindCSS">
@@ -768,8 +803,10 @@
                                                 </div>
                                             </div>
                                             <div class="text-black dark:text-white name">Tailwind</div>
-                                        </div>
-                                        <div class="space-y-5 text-center swiper-slide">
+
+                                        </div> --}}
+
+                                        {{-- <div class="space-y-5 text-center swiper-slide">
                                             <div class="text-center icon">
                                                 <img src="{{ asset('assets/frontend/assets/img/skill/html.svg') }}"
                                                     class="dark:grayscale" alt="HTML5">
@@ -828,7 +865,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-black dark:text-white name">jQuery</div>
-                                        </div>
+                                        </div> --}}
+
                                     </div>
 
                                 </div>
@@ -890,29 +928,31 @@
                             <div class="experience">
                                 <ul
                                     class="space-y-5 md:space-y-11 relative md:before:content-[''] md:before:absolute md:before:left-64 md:before:border-r md:before:border-platinum md:dark:before:border-metalBlack md:before:h-[calc(100%_-1.5rem)] md:before:top-1/2 md:before:-translate-y-1/2">
-                                    <li
-                                        class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
-                                        <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
-                                            <h6
-                                                class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
-                                                RDTL
-                                            </h6>
-                                            <p class="text-[13px] md:text-sm text-theme">
-                                                February, 2024 - Current
-                                            </p>
-                                        </div>
-                                        <div
-                                            class="md:flex-1 md:pl-16 relative md:before:content-[''] md:before:absolute md:before:-left-1 md:before:top-3 md:before:w-2 md:before:h-2 md:before:bg-theme md:before:rounded-full md:before:shadow-dots_glow">
-                                            <h4
-                                                class="text-xl xl:text-2xl font-medium xl:font-medium leading-7 text-black dark:text-white mb-2.5">
-                                                Web Developer
-                                            </h4>
-                                            <p>
-                                                Owing to advancements in product other designer technologies aute voluptate.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li
+                                    @foreach ($works as $work)
+                                        <li
+                                            class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
+                                            <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
+                                                <h6
+                                                    class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
+                                                    {{ $work->company_name }}
+                                                </h6>
+                                                <p class="text-[13px] md:text-sm text-theme">
+                                                    {{ $work->year_to_year }}
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="md:flex-1 md:pl-16 relative md:before:content-[''] md:before:absolute md:before:-left-1 md:before:top-3 md:before:w-2 md:before:h-2 md:before:bg-theme md:before:rounded-full md:before:shadow-dots_glow">
+                                                <h4
+                                                    class="text-xl xl:text-2xl font-medium xl:font-medium leading-7 text-black dark:text-white mb-2.5">
+                                                    {{ $work->designation }}
+                                                </h4>
+                                                <p>
+                                                    {{ $work->description }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                    {{-- <li
                                         class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
                                         <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
                                             <h6
@@ -933,8 +973,8 @@
                                                 Owing to advancements in product other designer technologies aute voluptate.
                                             </p>
                                         </div>
-                                    </li>
-                                    <li
+                                    </li> --}}
+                                    {{-- <li
                                         class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
                                         <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
                                             <h6
@@ -955,7 +995,7 @@
                                                 Owing to advancements in product other designer technologies aute voluptate.
                                             </p>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                             <br>
@@ -973,29 +1013,37 @@
                             <div class="experience">
                                 <ul
                                     class="space-y-5 md:space-y-11 relative md:before:content-[''] md:before:absolute md:before:left-64 md:before:border-r md:before:border-platinum md:dark:before:border-metalBlack md:before:h-[calc(100%_-1.5rem)] md:before:top-1/2 md:before:-translate-y-1/2">
+                                    @foreach ($educations as $education)
+
+
                                     <li
                                         class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
                                         <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
-                                            <h6
+                                            {{-- <h6
                                                 class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
                                                 Sotheast University
+                                            </h6> --}}
+                                            <h6
+                                                class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
+                                                {{ $education->institution_name }}
                                             </h6>
                                             <p class="text-[13px] md:text-sm text-theme">
-                                                2019-2023
+                                                {{ $education->year_to_year }}
                                             </p>
                                         </div>
                                         <div
                                             class="md:flex-1 md:pl-16 relative md:before:content-[''] md:before:absolute md:before:-left-1 md:before:top-3 md:before:w-2 md:before:h-2 md:before:bg-theme md:before:rounded-full md:before:shadow-dots_glow">
                                             <h4
                                                 class="text-xl xl:text-2xl font-medium xl:font-medium leading-7 text-black dark:text-white mb-2.5">
-                                                BSc in Engineering <br> CSE
+                                                {{ $education->certificate_name }}<br>{{ $education->group }}
                                             </h4>
                                             <!-- <p>
-                                                        Owing to advancements in product other designer technologies aute voluptate.
-                                                    </p> -->
+                                                                Owing to advancements in product other designer technologies aute voluptate.
+                                                            </p> -->
                                         </div>
                                     </li>
-                                    <li
+                                    @endforeach
+                                    {{-- <li
                                         class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
                                         <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
                                             <h6
@@ -1013,8 +1061,8 @@
                                                 Higher Secondary School Certificate(HSC) <br> Science
                                             </h4>
                                             <!-- <p>
-                                                        Owing to advancements in product other designer technologies aute voluptate.
-                                                    </p> -->
+                                                                Owing to advancements in product other designer technologies aute voluptate.
+                                                            </p> -->
                                         </div>
                                     </li>
                                     <li
@@ -1035,10 +1083,10 @@
                                                 Secondary School Certificate (SSC) <br> Science
                                             </h4>
                                             <!-- <p>
-                                                        Owing to advancements in product other designer technologies aute voluptate.
-                                                    </p> -->
+                                                                Owing to advancements in product other designer technologies aute voluptate.
+                                                            </p> -->
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

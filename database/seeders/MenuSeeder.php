@@ -154,10 +154,10 @@ class MenuSeeder extends Seeder
             ],
 
 
-            
+
     [
         "name" => "Contact Manage",
-        "icon" => "aperture",
+        "icon" => "phone-forwarded",
         "route" => null,
         "description" => null,
         "sorting" => 1,
@@ -185,10 +185,10 @@ class MenuSeeder extends Seeder
         ],
     ],
 
-    
+
     [
-        "name" => "Parsonal_Info Manage",
-        "icon" => "aperture",
+        "name" => "Parsonal Information Manage",
+        "icon" => "users",
         "route" => null,
         "description" => null,
         "sorting" => 1,
@@ -196,7 +196,7 @@ class MenuSeeder extends Seeder
         "status" => "Active",
         "children" => [
             [
-                "name" => "Parsonal_Info Add",
+                "name" => "Parsonal Information Add",
                 "icon" => "plus-circle",
                 "route" => "backend.parsonal_info.create",
                 "description" => null,
@@ -205,7 +205,7 @@ class MenuSeeder extends Seeder
                 "status" => "Active",
             ],
             [
-                "name" => "Parsonal_Info List",
+                "name" => "Parsonal Information List",
                 "icon" => "list",
                 "route" => "backend.parsonal_info.index",
                 "description" => null,
@@ -216,10 +216,10 @@ class MenuSeeder extends Seeder
         ],
     ],
 
-    
+
     [
         "name" => "Skills Manage",
-        "icon" => "aperture",
+        "icon" => "user-check",
         "route" => null,
         "description" => null,
         "sorting" => 1,
@@ -247,10 +247,10 @@ class MenuSeeder extends Seeder
         ],
     ],
 
-    
+
     [
         "name" => "About Manage",
-        "icon" => "aperture",
+        "icon" => "alert-octagon",
         "route" => null,
         "description" => null,
         "sorting" => 1,
@@ -270,6 +270,99 @@ class MenuSeeder extends Seeder
                 "name" => "About List",
                 "icon" => "list",
                 "route" => "backend.about.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
+
+    [
+        "name" => "Work Experience Manage",
+        "icon" => "lock",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "WorkExperience-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "Work Experience Add",
+                "icon" => "plus-circle",
+                "route" => "backend.workexperience.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "Work Experience List",
+                "icon" => "list",
+                "route" => "backend.workexperience.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
+
+    [
+        "name" => "Education Manage",
+        "icon" => "layers",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "Education-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "Education Add",
+                "icon" => "plus-circle",
+                "route" => "backend.education.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "Education List",
+                "icon" => "list",
+                "route" => "backend.education.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
+
+    [
+        "name" => "Featured Project Manage",
+        "icon" => "aperture",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "FeaturedProject-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "Featured Project Add",
+                "icon" => "plus-circle",
+                "route" => "backend.featuredproject.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "Featured Project List",
+                "icon" => "list",
+                "route" => "backend.featuredproject.index",
                 "description" => null,
                 "sorting" => 1,
                 "permission_name" => "role-list",

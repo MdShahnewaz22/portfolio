@@ -15,7 +15,7 @@ let props = defineProps({
 });
 
 const applyFilter = () => {
-    router.get(route('backend.skills.index'), filters.value, { preserveState: true });
+    router.get(route('backend.education.index'), filters.value, { preserveState: true });
 };
 
 </script>
@@ -35,7 +35,7 @@ const applyFilter = () => {
 
                     <div class="flex space-x-2">
                         <div class="w-full">
-                            <input id="title" v-model="filters.title"
+                            <input id="title_en" v-model="filters.name"
                                    class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
                                    type="text" placeholder="Title" @input="applyFilter" />
                         </div>

@@ -13,6 +13,9 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\Parsonal_InfoController;
 use App\Http\Controllers\Backend\SkillsController;
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\WorkExperienceController;
+use App\Http\Controllers\Backend\EducationController;
+use App\Http\Controllers\Backend\FeaturedProjectController;
 //don't remove this comment from route namespace
 
 /*
@@ -75,10 +78,22 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 	// for Skills
 	Route::resource('skills', SkillsController::class);
 	Route::get('skills/{id}/status/{status}/change', [SkillsController::class, 'changeStatus'])->name('skills.status.change');
-    
+
 	// for About
 	Route::resource('about', AboutController::class);
 	Route::get('about/{id}/status/{status}/change', [AboutController::class, 'changeStatus'])->name('about.status.change');
+
+	// for WorkExperience
+	Route::resource('workexperience', WorkExperienceController::class);
+	Route::get('workexperience/{id}/status/{status}/change', [WorkExperienceController::class, 'changeStatus'])->name('workexperience.status.change');
+
+	// for Education
+	Route::resource('education', EducationController::class);
+	Route::get('education/{id}/status/{status}/change', [EducationController::class, 'changeStatus'])->name('education.status.change');
+
+	// for FeaturedProject
+	Route::resource('featuredproject', FeaturedProjectController::class);
+	Route::get('featuredproject/{id}/status/{status}/change', [FeaturedProjectController::class, 'changeStatus'])->name('featuredproject.status.change');
 
 	//don't remove this comment from route body
 });

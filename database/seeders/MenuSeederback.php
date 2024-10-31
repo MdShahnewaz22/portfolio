@@ -31,8 +31,8 @@ class MenuSeeder extends Seeder
             'parent_id' => $parent_id,
             'permission_name' => $data['permission_name'],
             'status' => $data['status'],
-            'created_at' => now(), 
-            'updated_at' => now(), 
+            'created_at' => now(),
+            'updated_at' => now(),
             'deleted_at' => null,
         ]);
 

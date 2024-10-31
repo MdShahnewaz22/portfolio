@@ -2,45 +2,40 @@
 
 namespace App\Services;
 
-use App\Models\About;
+use App\Models\Education;
 
-class AboutService
+class EducationService
 {
-    protected $aboutModel;
+    protected $educationModel;
 
-    public function __construct(About $aboutModel)
+    public function __construct(Education $educationModel)
     {
-        $this->aboutModel = $aboutModel;
+        $this->educationModel = $educationModel;
     }
 
     public function list()
     {
-        return $this->aboutModel->whereNull('deleted_at');
+        return $this->educationModel->whereNull('deleted_at');
     }
 
     public function all()
     {
-        return $this->aboutModel->whereNull('deleted_at')->all();
-    }
-
-    public function latest()
-    {
-        return $this->aboutModel->whereNull('deleted_at')->latest()->firstOrFail();
+        return $this->educationModel->whereNull('deleted_at')->get();
     }
 
     public function find($id)
     {
-        return $this->aboutModel->find($id);
+        return $this->educationModel->find($id);
     }
 
     public function create(array $data)
     {
-        return $this->aboutModel->create($data);
+        return $this->educationModel->create($data);
     }
 
     public function update(array $data, $id)
     {
-        $dataInfo = $this->aboutModel->findOrFail($id);
+        $dataInfo = $this->educationModel->findOrFail($id);
 
         $dataInfo->update($data);
 
@@ -49,7 +44,7 @@ class AboutService
 
     public function delete($id)
     {
-        $dataInfo = $this->aboutModel->find($id);
+        $dataInfo = $this->educationModel->find($id);
 
         if (!empty($dataInfo)) {
 
@@ -64,7 +59,7 @@ class AboutService
 
     public function changeStatus($request)
     {
-        $dataInfo = $this->aboutModel->findOrFail($request->id);
+        $dataInfo = $this->educationModel->findOrFail($request->id);
 
         $dataInfo->update(['status' => $request->status]);
 
@@ -73,7 +68,7 @@ class AboutService
 
     public function activeList()
     {
-        return $this->aboutModel->whereNull('deleted_at')->where('status', 'Active')->get();
+        return $this->educationModel->whereNull('deleted_at')->where('status', 'Active')->get();
     }
 
 }

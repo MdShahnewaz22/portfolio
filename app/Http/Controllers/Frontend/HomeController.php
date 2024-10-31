@@ -7,6 +7,9 @@ use App\Models\Contact;
 use App\Services\ContactService;
 use App\Services\Parsonal_InfoService;
 use App\Services\SkillsService;
+use App\Services\AboutService;
+use App\Services\WorkExperienceService;
+use App\Services\EducationService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Exception;
@@ -14,21 +17,30 @@ use Exception;
 
 class HomeController extends Controller
 {
-    protected $contactService,$Parsonal_InfoService,$skillsService;
-    public function __construct(ContactService $contactService,Parsonal_InfoService $Parsonal_InfoService,SkillsService $skillsService)
+    protected $contactService,$Parsonal_InfoService,$skillsService,$AboutService,$WorkExperienceService,$educationService;
+
+    public function __construct(ContactService $contactService,Parsonal_InfoService $Parsonal_InfoService,SkillsService $skillsService,AboutService $AboutService,WorkExperienceService $WorkExperienceService,EducationService $educationService)
     {
         $this->contactService = $contactService;
         $this->Parsonal_InfoService = $Parsonal_InfoService;
         $this->skillsService = $skillsService;
+        $this->AboutService = $AboutService;
+        $this->WorkExperienceService = $WorkExperienceService;
+        $this->educationService = $educationService;
 
     }
 
     public function index()
     {
         $parsonal_info = $this->Parsonal_InfoService->latest();
-        $skills = $this->skillsService->all();
+        $skills = $this->skillsService->latest();
+        $Advantages = $this->skillsService->all();
+        $about = $this->AboutService->latest();
+        $works = $this->WorkExperienceService->all();
+        $educations = $this->educationService->all();
+
         //  dd($skills);
-        return view('frontend.home',compact('parsonal_info','skills'));
+        return view('frontend.home',compact('parsonal_info','skills','about','works','educations','Advantages'));
 
     }
 
