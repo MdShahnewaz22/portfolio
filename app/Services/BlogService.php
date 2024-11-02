@@ -2,55 +2,50 @@
 
 namespace App\Services;
 
-use App\Models\Skills;
+use App\Models\Blog;
 
-class SkillsService
+class BlogService
 {
-    protected $skillsModel;
+    protected $blogModel;
 
-    public function __construct(Skills $skillsModel)
+    public function __construct(Blog $blogModel)
     {
-        $this->skillsModel = $skillsModel;
+        $this->blogModel = $blogModel;
     }
 
     public function list()
     {
-        return $this->skillsModel->whereNull('deleted_at');
+        return $this->blogModel->whereNull('deleted_at');
     }
 
     public function all()
     {
-        return $this->skillsModel->whereNull('deleted_at')->get();
+        return $this->blogModel->whereNull('deleted_at')->get();
     }
 
-    // public function latest()
-    // {
-    //     return $this->skillsModel->whereNull('deleted_at')->latest()->firstOrFail();
-    // }
+
     public function latest()
     {
-        return $this->skillsModel
+        return $this->blogModel
             ->whereNull('deleted_at')
             ->first()
-            ->take(5) // Limit to 5 records
+            ->take(2) // Limit to 5 records
             ->get();  // Retrieve all 5 records
     }
 
-
-
     public function find($id)
     {
-        return $this->skillsModel->find($id);
+        return $this->blogModel->find($id);
     }
 
     public function create(array $data)
     {
-        return $this->skillsModel->create($data);
+        return $this->blogModel->create($data);
     }
 
     public function update(array $data, $id)
     {
-        $dataInfo = $this->skillsModel->findOrFail($id);
+        $dataInfo = $this->blogModel->findOrFail($id);
 
         $dataInfo->update($data);
 
@@ -59,7 +54,7 @@ class SkillsService
 
     public function delete($id)
     {
-        $dataInfo = $this->skillsModel->find($id);
+        $dataInfo = $this->blogModel->find($id);
 
         if (!empty($dataInfo)) {
 
@@ -74,7 +69,7 @@ class SkillsService
 
     public function changeStatus($request)
     {
-        $dataInfo = $this->skillsModel->findOrFail($request->id);
+        $dataInfo = $this->blogModel->findOrFail($request->id);
 
         $dataInfo->update(['status' => $request->status]);
 
@@ -83,6 +78,7 @@ class SkillsService
 
     public function activeList()
     {
-        return $this->skillsModel->whereNull('deleted_at')->where('status', 'Active')->get();
+        return $this->blogModel->whereNull('deleted_at')->where('status', 'Active')->get();
     }
+
 }

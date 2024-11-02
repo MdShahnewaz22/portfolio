@@ -18,10 +18,26 @@ class FeaturedProjectService
         return $this->featuredprojectModel->whereNull('deleted_at');
     }
 
+    // public function all()
+    // {
+    //     return $this->featuredprojectModel->whereNull('deleted_at')->all();
+    // }
     public function all()
     {
-        return $this->featuredprojectModel->whereNull('deleted_at')->all();
+        return $this->featuredprojectModel->whereNull('deleted_at')->get();
     }
+
+
+    public function latest()
+    {
+        return $this->featuredprojectModel
+            ->whereNull('deleted_at')
+            ->first()
+            ->take(4) // Limit to 5 records
+            ->get();  // Retrieve all 5 records
+    }
+
+
 
     public function find($id)
     {

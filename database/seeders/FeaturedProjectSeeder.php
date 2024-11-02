@@ -24,6 +24,21 @@ class FeaturedProjectSeeder extends Seeder
     {
         return [
             // dummy data array will be here
+            [
+                'project_name'=>'Hospital Management System',
+                'live_link'=>'HTTPS://SMARTCARE.COM.BD/',
+                'image'=>'featured_project/doctor 6.png',
+            ],
+            [
+                'project_name'=>'ServiceShop',
+                'live_link'=>'ServiceShop',
+                'image'=>'featured_project/s1.jpg',
+            ],
+            [
+                'project_name'=>'Case Management System',
+                'live_link'=>'https://case-management.rdtl.xyz/',
+                'image'=>'featured_project/case.png',
+            ]
         ];
     }
 }

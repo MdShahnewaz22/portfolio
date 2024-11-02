@@ -99,7 +99,7 @@ trait SystemTrait
         return $folder . '/' . $fileName;
     }
 
-    public function storeDescription($dataId,$referenceTable,$description)
+    public function storeDescription($dataId, $referenceTable, $description)
     {
         $index = 0;
 

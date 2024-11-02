@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             WorkExperienceSeeder::class,
             EducationSeeder::class,
+            FeaturedProjectSeeder::class,
+            BlogSeeder::class,
 
         ]);
     }

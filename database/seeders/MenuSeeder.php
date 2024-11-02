@@ -371,6 +371,37 @@ class MenuSeeder extends Seeder
         ],
     ],
 
+    
+    [
+        "name" => "Blog Manage",
+        "icon" => "aperture",
+        "route" => null,
+        "description" => null,
+        "sorting" => 1,
+        "permission_name" => "Blog-management",
+        "status" => "Active",
+        "children" => [
+            [
+                "name" => "Blog Add",
+                "icon" => "plus-circle",
+                "route" => "backend.blog.create",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-add",
+                "status" => "Active",
+            ],
+            [
+                "name" => "Blog List",
+                "icon" => "list",
+                "route" => "backend.blog.index",
+                "description" => null,
+                "sorting" => 1,
+                "permission_name" => "role-list",
+                "status" => "Active",
+            ],
+        ],
+    ],
+
     //don't remove this comment from menu seeder
         ];
     }

@@ -768,25 +768,23 @@
                                             <div class="text-black dark:text-white name">Weblfow</div>
                                         </div> --}}
                                         @foreach ($Advantages as $Advantage)
-
-
-                                        <div class="space-y-5 text-center swiper-slide">
-                                            <div class="text-center icon">
-                                                {{-- <img src="{{ asset('/assets/frontend/assets/img/skill/tailwind.svg') }}" --}}
-                                                <img style="max-width: 40%;" src="{{$Advantage->image}}"
-                                                    class="dark:grayscale" alt="TailwindCSS">
-                                            </div>
-                                            <div class="progressCircle">
-                                                <div class="relative w-32 h-32 mx-auto circle md:w-40 md:h-40"
-                                                    data-percent="{{$Advantage->percent}}">
-                                                    <div
-                                                        class="absolute inset-0 text-2xl font-semibold text-black dark:text-white label flex-center">
+                                            <div class="space-y-5 text-center swiper-slide">
+                                                <div class="text-center icon">
+                                                    {{-- <img src="{{ asset('/assets/frontend/assets/img/skill/tailwind.svg') }}" --}}
+                                                    <img style="max-width: 40%;" src="{{ $Advantage->image }}"
+                                                        class="dark:grayscale" alt="TailwindCSS">
+                                                </div>
+                                                <div class="progressCircle">
+                                                    <div class="relative w-32 h-32 mx-auto circle md:w-40 md:h-40"
+                                                        data-percent="{{ $Advantage->percent }}">
+                                                        <div
+                                                            class="absolute inset-0 text-2xl font-semibold text-black dark:text-white label flex-center">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {{-- <div class="text-black dark:text-white name">Tailwind</div> --}}
+                                                <div class="text-black dark:text-white name">{{ $Advantage->title }}</div>
                                             </div>
-                                            {{-- <div class="text-black dark:text-white name">Tailwind</div> --}}
-                                            <div class="text-black dark:text-white name">{{$Advantage->title}}</div>
-                                        </div>
                                         @endforeach
 
                                         {{-- <div class="space-y-5 text-center swiper-slide">
@@ -1014,34 +1012,32 @@
                                 <ul
                                     class="space-y-5 md:space-y-11 relative md:before:content-[''] md:before:absolute md:before:left-64 md:before:border-r md:before:border-platinum md:dark:before:border-metalBlack md:before:h-[calc(100%_-1.5rem)] md:before:top-1/2 md:before:-translate-y-1/2">
                                     @foreach ($educations as $education)
-
-
-                                    <li
-                                        class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
-                                        <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
-                                            {{-- <h6
+                                        <li
+                                            class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
+                                            <div class="flex items-center justify-between mb-5 md:w-64 md:block md:mb-0">
+                                                {{-- <h6
                                                 class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
                                                 Sotheast University
                                             </h6> --}}
-                                            <h6
-                                                class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
-                                                {{ $education->institution_name }}
-                                            </h6>
-                                            <p class="text-[13px] md:text-sm text-theme">
-                                                {{ $education->year_to_year }}
-                                            </p>
-                                        </div>
-                                        <div
-                                            class="md:flex-1 md:pl-16 relative md:before:content-[''] md:before:absolute md:before:-left-1 md:before:top-3 md:before:w-2 md:before:h-2 md:before:bg-theme md:before:rounded-full md:before:shadow-dots_glow">
-                                            <h4
-                                                class="text-xl xl:text-2xl font-medium xl:font-medium leading-7 text-black dark:text-white mb-2.5">
-                                                {{ $education->certificate_name }}<br>{{ $education->group }}
-                                            </h4>
-                                            <!-- <p>
-                                                                Owing to advancements in product other designer technologies aute voluptate.
-                                                            </p> -->
-                                        </div>
-                                    </li>
+                                                <h6
+                                                    class="text-sm font-medium text-black dark:text-white text-opacity-60 md:text-base md:text-opacity-100">
+                                                    {{ $education->institution_name }}
+                                                </h6>
+                                                <p class="text-[13px] md:text-sm text-theme">
+                                                    {{ $education->year_to_year }}
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="md:flex-1 md:pl-16 relative md:before:content-[''] md:before:absolute md:before:-left-1 md:before:top-3 md:before:w-2 md:before:h-2 md:before:bg-theme md:before:rounded-full md:before:shadow-dots_glow">
+                                                <h4
+                                                    class="text-xl xl:text-2xl font-medium xl:font-medium leading-7 text-black dark:text-white mb-2.5">
+                                                    {{ $education->certificate_name }}<br>{{ $education->group }}
+                                                </h4>
+                                                <!-- <p>
+                                                                    Owing to advancements in product other designer technologies aute voluptate.
+                                                                </p> -->
+                                            </div>
+                                        </li>
                                     @endforeach
                                     {{-- <li
                                         class="p-5 border rounded-xl md:flex max-md:space-y-2 border-platinum dark:border-metalBlack md:border-0 md:p-0 md:rounded-none">
@@ -1118,37 +1114,41 @@
                             </div><!--./section-title-->
 
                             <div class="portfolio_wrapper grid sm:grid-cols-2 gap-4 lg:gap-7.5">
-                                <div class="relative item md:col-span-2 z-1 group">
-                                    <a class='flex items-center justify-center p-3 overflow-hidden border md:p-4 rounded-xl border-platinum dark:border-greyBlack'
-                                        href='project-single.html'>
-                                        <div class="img-wrapper">
-                                            <img src="{{ asset('assets/frontend/assets/img/portfolio/portfolio-img1.png') }}"
-                                                class="rounded-lg max-md:min-h-[17rem] max-md:w-full max-md:object-cover max-md:object-center transition-all duration-300 group-hover:blur-xs"
-                                                alt="portfolio">
-                                            <div
-                                                class="absolute inset-0 transition-all duration-300 opacity-0 overlay bg-gradient-to-t from-white dark:from-black to-transparent rounded-xl group-hover:opacity-100">
+                                @foreach ($featureds as $index => $featured)
+                                    <div
+                                        class="relative item  z-1 group {{ $index == 0 || $index == 3 ? 'md:col-span-2' : 'md:col-span-1' }}">
+                                        <a class='flex items-center justify-center p-3 overflow-hidden border md:p-4 rounded-xl border-platinum dark:border-greyBlack'
+                                            href='project-single.html'>
+                                            <div class="img-wrapper">
+                                                <img src="{{ $featured->image }}"
+                                                    class="rounded-lg max-md:min-h-[17rem] max-md:w-full max-md:object-cover max-md:object-center transition-all duration-300 group-hover:blur-xs"
+                                                    alt="portfolio">
+                                                <div
+                                                    class="absolute inset-0 transition-all duration-300 opacity-0 overlay bg-gradient-to-t from-white dark:from-black to-transparent rounded-xl group-hover:opacity-100">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div
-                                            class="info text-center position-center max-lg:text-3xl text-lead font-semibold text-black dark:text-white leading-1.15 transition duration-500 scale-110 opacity-0 group-hover:scale-100 group-hover:opacity-100 relative z-10">
-                                            Design
-                                            <span>
-                                                Specialization
-                                            </span>
-                                        </div>
-                                    </a>
-                                    <ul
-                                        class="absolute z-10 transition-all duration-500 opacity-0 md:top-9 md:right-9 top-6 right-6 group-hover:opacity-100">
-                                        <li>
-                                            <a href="#"
-                                                class="inline-flex items-center gap-2 px-5 py-3 text-sm font-light leading-none text-white transition-colors bg-metalBlack rounded-3xl hover:text-theme">
-                                                Branding
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div><!--./portfolio-card-->
+                                            <div
+                                                class="info text-center position-center max-lg:text-3xl text-lead font-semibold text-black dark:text-white leading-1.15 transition duration-500 scale-110 opacity-0 group-hover:scale-100 group-hover:opacity-100 relative z-10">
+                                                Design </br>
+                                                <span>
+                                                    {{ $featured->project_name }}
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <ul
+                                            class="absolute z-10 transition-all duration-500 opacity-0 md:top-9 md:right-9 top-6 right-6 group-hover:opacity-100">
+                                            <li>
+                                                <a href="{{ $featured->live_link }}"
+                                                    class="inline-flex items-center gap-2 px-5 py-3 text-sm font-light leading-none text-white transition-colors bg-metalBlack rounded-3xl hover:text-theme">
+                                                    Live Link
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                @endforeach
+                                <!--./portfolio-card-->
 
-                                <div class="relative item md:col-span-1 z-1 group">
+                                {{-- <div class="relative item md:col-span-1 z-1 group">
                                     <a class='flex items-center justify-center p-3 overflow-hidden border md:p-4 rounded-xl border-platinum dark:border-greyBlack'
                                         href='project-single.html'>
                                         <div class="img-wrapper">
@@ -1176,9 +1176,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div><!--./portfolio-card-->
+                                </div> --}}
+                                <!--./portfolio-card-->
 
-                                <div class="relative item md:col-span-1 z-1 group">
+                                {{-- <div class="relative item md:col-span-1 z-1 group">
                                     <a class='flex items-center justify-center p-3 overflow-hidden border md:p-4 rounded-xl border-platinum dark:border-greyBlack'
                                         href='project-single.html'>
                                         <div class="img-wrapper">
@@ -1206,9 +1207,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div><!--./portfolio-card-->
+                                </div> --}}
+                                <!--./portfolio-card-->
 
-                                <div class="relative item md:col-span-2 z-1 group">
+                                {{-- <div class="relative item md:col-span-2 z-1 group">
                                     <a class='flex items-center justify-center p-3 overflow-hidden border md:p-4 rounded-xl border-platinum dark:border-greyBlack'
                                         href='project-single.html'>
                                         <div class="img-wrapper">
@@ -1236,16 +1238,17 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div><!--./portfolio-card-->
+                                </div> --}}
+                                <!--./portfolio-card-->
                             </div>
 
-
+                            {{--
                             <div class="mt-10 text-center more-blogs md:mt-13">
-                                <a href="#"
+                                <a href="{{ url('/more-project') }}"
                                     class="inline-flex items-center gap-2 text-[15px] font-medium border border-theme bg-theme text-white py-4.5 px-9 rounded-4xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover">
                                     More Projects
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>
@@ -1272,120 +1275,56 @@
                                     I design products that are more than pretty. I make them shippable and usable, tempor
                                     non mollit dolor et do aute
                                 </p>
-                            </div><!--./section-title-->
+                            </div>
+                            <!--./section-title-->
 
                             <div class="blog-list md:space-y-7.5 space-y-5">
+                                @foreach ($blogs as $blog)
+                                    <div
+                                        class="grid md:gap-2 grid-cols-12 overflow-hidden article group bg-flashWhite dark:bg-metalBlack items-center rounded-2xl p-3.5">
+                                        <div
+                                            class="flex col-span-12 overflow-hidden thumbnail sm:col-span-6 md:col-span-5">
+                                            <a class='block w-full overflow-hidden rounded-xl'
+                                                href='article-details.html'>
+                                                <img src="{{ $blog->image }}"
+                                                    class="object-cover object-center w-full h-full min-h-[288px] transition-all duration-300 ease-in-out max-h-60 md:min-h-60 group-hover:scale-105"
+                                                    alt="Post Title">
+                                            </a>
+                                        </div>
+                                        <div
+                                            class="relative flex flex-col col-span-12 px-3 pt-6 pb-2 md:p-5 post-content sm:col-span-6 md:col-span-7">
+                                            <div class="flex items-center gap-5">
+                                                <div class="text-sm font-medium tags">
+                                                    <a href="#" class="transition-colors hover:text-theme">
+                                                        UI Design
+                                                    </a>,
+                                                    <span class="post_date">
+                                                        {{ $blog->date }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="post-title mt-3 md:mt-4.5 mb-6 md:mb-8">
+                                                <a class='text-xl font-semibold leading-normal text-black transition-colors dark:text-white line-clamp-2 2xl:text-2xl 2xl:leading-normal hover:text-theme'
+                                                    href='article-details.html'>
+                                                    {{ $blog->title }}
+                                                </a>
+                                            </div>
 
-                                <div
-                                    class="grid md:gap-2 grid-cols-12 overflow-hidden article group bg-flashWhite dark:bg-metalBlack items-center rounded-2xl p-3.5">
-                                    <div class="flex col-span-12 overflow-hidden thumbnail sm:col-span-6 md:col-span-5">
-                                        <a class='block w-full overflow-hidden rounded-xl' href='article-details.html'>
-                                            <img src="{{ asset('assets/frontend/assets/img/blog/article1.png') }}"
-                                                class="object-cover object-center w-full h-full min-h-[288px] transition-all duration-300 ease-in-out max-h-60 md:min-h-60 group-hover:scale-105"
-                                                alt="Post Title">
-                                        </a>
-                                    </div>
-                                    <div
-                                        class="relative flex flex-col col-span-12 px-3 pt-6 pb-2 md:p-5 post-content sm:col-span-6 md:col-span-7">
-                                        <div class="flex items-center gap-5">
-                                            <div class="text-sm font-medium tags">
-                                                <a href="#" class="transition-colors hover:text-theme">
-                                                    UI Design
-                                                </a>,
-                                                <span class="post_date">
-                                                    03 May 2023
-                                                </span>
+                                            <div class="read-details">
+
+                                                <a class="inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white"
+                                            href="{{ url('/blog-details'.$blog->id)}}">Read More</a>
                                             </div>
                                         </div>
-                                        <div class="post-title mt-3 md:mt-4.5 mb-6 md:mb-8">
-                                            <a class='text-xl font-semibold leading-normal text-black transition-colors dark:text-white line-clamp-2 2xl:text-2xl 2xl:leading-normal hover:text-theme'
-                                                href='article-details.html'>
-                                                Elevate your mornings with perfectly brewed coffee
-                                            </a>
-                                        </div>
-                                        <div class="read-details">
-                                            <a class='inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white'
-                                                href='article-details.html'>
-                                                Read More
-                                            </a>
-                                        </div>
                                     </div>
-                                </div>
-                                <div
-                                    class="grid md:gap-2 grid-cols-12 overflow-hidden article group bg-flashWhite dark:bg-metalBlack items-center rounded-2xl p-3.5">
-                                    <div class="flex col-span-12 overflow-hidden thumbnail sm:col-span-6 md:col-span-5">
-                                        <a class='block w-full overflow-hidden rounded-xl' href='article-details.html'>
-                                            <img src="{{ asset('assets/frontend/assets/img/blog/article2.png') }}"
-                                                class="object-cover object-center w-full h-full min-h-[288px] transition-all duration-300 ease-in-out max-h-60 md:min-h-60 group-hover:scale-105"
-                                                alt="Post Title">
-                                        </a>
-                                    </div>
-                                    <div
-                                        class="relative flex flex-col col-span-12 px-3 pt-6 pb-2 md:p-5 post-content sm:col-span-6 md:col-span-7">
-                                        <div class="flex items-center gap-5">
-                                            <div class="text-sm font-medium tags">
-                                                <a href="#" class="transition-colors hover:text-theme">
-                                                    UI Design
-                                                </a>,
-                                                <span class="post_date">
-                                                    03 May 2023
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="post-title mt-3 md:mt-4.5 mb-6 md:mb-8">
-                                            <a class='text-xl font-semibold leading-normal text-black transition-colors dark:text-white line-clamp-2 2xl:text-2xl 2xl:leading-normal hover:text-theme'
-                                                href='article-details.html'>
-                                                Mastering the clock: A guide to time management
-                                            </a>
-                                        </div>
-                                        <div class="read-details">
-                                            <a class='inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white'
-                                                href='article-details.html'>
-                                                Read More
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="grid md:gap-2 grid-cols-12 overflow-hidden article group bg-flashWhite dark:bg-metalBlack items-center rounded-2xl p-3.5">
-                                    <div class="flex col-span-12 overflow-hidden thumbnail sm:col-span-6 md:col-span-5">
-                                        <a class='block w-full overflow-hidden rounded-xl' href='article-details.html'>
-                                            <img src="{{ asset('assets/frontend/assets/img/blog/article3.png') }}"
-                                                class="object-cover object-center w-full h-full min-h-[288px] transition-all duration-300 ease-in-out max-h-60 md:min-h-60 group-hover:scale-105"
-                                                alt="Post Title">
-                                        </a>
-                                    </div>
-                                    <div
-                                        class="relative flex flex-col col-span-12 px-3 pt-6 pb-2 md:p-5 post-content sm:col-span-6 md:col-span-7">
-                                        <div class="flex items-center gap-5">
-                                            <div class="text-sm font-medium tags">
-                                                <a href="#" class="transition-colors hover:text-theme">
-                                                    UI Design
-                                                </a>,
-                                                <span class="post_date">
-                                                    03 May 2023
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="post-title mt-3 md:mt-4.5 mb-6 md:mb-8">
-                                            <a class='text-xl font-semibold leading-normal text-black transition-colors dark:text-white line-clamp-2 2xl:text-2xl 2xl:leading-normal hover:text-theme'
-                                                href='article-details.html'>
-                                                Homeward bound: Crafting a productive home pffice
-                                            </a>
-                                        </div>
-                                        <div class="read-details">
-                                            <a class='inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white'
-                                                href='article-details.html'>
-                                                Read More
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
 
                             </div>
 
                             <div class="mt-10 text-center more-blogs md:mt-13">
-                                <a href="#"
+                                <a href="{{ '/more-blog' }}"
                                     class="inline-flex items-center gap-2 text-[15px] font-medium border border-theme bg-theme text-white py-4.5 px-9 rounded-4xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover">
                                     More Post
                                 </a>
@@ -1509,10 +1448,10 @@
                                                 required>
                                         </div>
                                         <div class="form-group">
-                                            <textarea name="message" name="message" placeholder="Message" rows="5"
+                                            <textarea name="message" placeholder="Message" rows="5"
                                                 class="w-full px-5 py-4 text-sm outline-none focus:border-theme dark:placeholder:text-white/40"></textarea>
                                         </div>
-                                        <div class=" form-group">
+                                        <div class="form-group">
                                             <button type="submit"
                                                 class="inline-flex items-center gap-2 text-[15px] font-medium border border-theme bg-theme text-white py-4.5 px-9 rounded-4xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover"
                                                 aria-label="Send Message">
@@ -1520,6 +1459,7 @@
                                             </button>
                                         </div>
                                     </form>
+
 
                                     <!-- Contact form end -->
                                 </div>

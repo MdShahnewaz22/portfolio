@@ -2,9 +2,9 @@
     namespace App\Http\Controllers\Backend;
 
     use App\Http\Controllers\Controller;
-    use App\Http\Requests\FeaturedProjectRequest;
+    use App\Http\Requests\BlogRequest;
     use Illuminate\Support\Facades\DB;
-    use App\Services\FeaturedProjectService;
+    use App\Services\BlogService;
     use Illuminate\Http\Request;
     use Illuminate\Support\Str;
     use Illuminate\Support\Facades\Schema;
@@ -12,26 +12,26 @@
     use App\Traits\SystemTrait;
     use Exception;
 
-    class FeaturedProjectController extends Controller
+    class BlogController extends Controller
     {
         use SystemTrait;
 
-        protected $featuredprojectService;
+        protected $blogService;
 
-        public function __construct(FeaturedProjectService $featuredprojectService)
+        public function __construct(BlogService $blogService)
         {
-            $this->featuredprojectService = $featuredprojectService;
+            $this->blogService = $blogService;
         }
 
         public function index()
         {
             return Inertia::render(
-                'Backend/FeaturedProject/Index',
+                'Backend/Blog/Index',
                 [
-                    'pageTitle' => fn () => 'Featured Project List',
+                    'pageTitle' => fn () => 'Blog List',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Featured Project Manage'],
-                        ['link' => route('backend.featuredproject.index'), 'title' => 'Featured Project List'],
+                        ['link' => null, 'title' => 'Blog Manage'],
+                        ['link' => route('backend.blog.index'), 'title' => 'Blog List'],
                     ],
                     'tableHeaders' => fn () => $this->getTableHeaders(),
                     'dataFields' => fn () => $this->getDataFields(),
@@ -44,9 +44,13 @@
     {
         return [
             ['fieldName' => 'index', 'class' => 'text-center'],
-            ['fieldName' => 'project_name', 'class' => 'text-center'],
-			['fieldName' => 'live_link', 'class' => 'text-center'],
-			['fieldName' => 'image', 'class' => 'text-center'],
+            ['fieldName' => 'image', 'class' => 'text-center'],
+			['fieldName' => 'date', 'class' => 'text-center'],
+			['fieldName' => 'title', 'class' => 'text-center'],
+			['fieldName' => 'posted_by', 'class' => 'text-center'],
+			['fieldName' => 'category', 'class' => 'text-center'],
+			['fieldName' => 'posted_on', 'class' => 'text-center'],
+			['fieldName' => 'description', 'class' => 'text-center'],
             ['fieldName' => 'status', 'class' => 'text-center'],
         ];
     }
@@ -54,9 +58,13 @@
     {
         return [
             'Sl/No',
-            'Project Name',
-			'Live Link',
-			'Image',
+            'Image',
+			'Date',
+			'Title',
+			'Posted By',
+			'Category',
+			'Posted On',
+			'Description',
             'Status',
             'Action'
         ];
@@ -64,16 +72,28 @@
 
     private function getDatas()
     {
-        $query = $this->featuredprojectService->list();
+        $query = $this->blogService->list();
 
-        if(request()->filled('project_name'))
-				$query->where('project_name', 'like', request()->project_name .'%');
-
-			if(request()->filled('live_link'))
-				$query->where('live_link', 'like', request()->live_link .'%');
-
-			if(request()->filled('image'))
+        if(request()->filled('image'))
 				$query->where('image', 'like', request()->image .'%');
+
+			if(request()->filled('date'))
+				$query->where('date', 'like', request()->date .'%');
+
+			if(request()->filled('title'))
+				$query->where('title', 'like', request()->title .'%');
+
+			if(request()->filled('posted_by'))
+				$query->where('posted_by', 'like', request()->posted_by .'%');
+
+			if(request()->filled('category'))
+				$query->where('category', 'like', request()->category .'%');
+
+			if(request()->filled('posted_on'))
+				$query->where('posted_on', 'like', request()->posted_on .'%');
+
+			if(request()->filled('description'))
+				$query->where('description', 'like', request()->description .'%');
 
         $datas = $query->paginate(request()->numOfData ?? 10)->withQueryString();
 
@@ -81,10 +101,14 @@
             $customData = new \stdClass();
             $customData->index = $index + 1;
 
-            $customData->project_name = $data->project_name;
-			$customData->live_link = $data->live_link;
-			// $customData->image = $data->image;
+            // $customData->image = $data->image;
             $customData->image = '<img src="' . $data->image . '" height="60" width="70"/>';
+			$customData->date = $data->date;
+			$customData->title = $data->title;
+			$customData->posted_by = $data->posted_by;
+			$customData->category = $data->category;
+			$customData->posted_on = $data->posted_on;
+			$customData->description = $data->description;
 
 
             $customData->status = getStatusText($data->status);
@@ -93,18 +117,18 @@
 
                   [
                     'linkClass' => 'semi-bold text-white statusChange ' . (($data->status == 'Active') ? "bg-gray-500" : "bg-green-500"),
-                    'link' => route('backend.featuredproject.status.change', ['id' => $data->id, 'status' => $data->status == 'Active' ? 'Inactive' : 'Active']),
+                    'link' => route('backend.blog.status.change', ['id' => $data->id, 'status' => $data->status == 'Active' ? 'Inactive' : 'Active']),
                     'linkLabel' => getLinkLabel((($data->status == 'Active') ? "Inactive" : "Active"), null, null)
                 ],
 
                 [
                     'linkClass' => 'bg-yellow-400 text-black semi-bold',
-                    'link' => route('backend.featuredproject.edit', $data->id),
+                    'link' => route('backend.blog.edit', $data->id),
                     'linkLabel' => getLinkLabel('Edit', null, null)
                 ],
                 [
                     'linkClass' => 'deleteButton bg-red-500 text-white semi-bold',
-                    'link' => route('backend.featuredproject.destroy', $data->id),
+                    'link' => route('backend.blog.destroy', $data->id),
                     'linkLabel' => getLinkLabel('Delete', null, null)
                 ]
             ];
@@ -117,19 +141,19 @@
         public function create()
         {
             return Inertia::render(
-                'Backend/FeaturedProject/Form',
+                'Backend/Blog/Form',
                 [
-                    'pageTitle' => fn () => 'Featured Project Create',
+                    'pageTitle' => fn () => 'Blog Create',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Featured Project Manage'],
-                        ['link' => route('backend.featuredproject.create'), 'title' => 'Featured Project Create'],
+                        ['link' => null, 'title' => 'Blog Manage'],
+                        ['link' => route('backend.blog.create'), 'title' => 'Blog Create'],
                     ],
                 ]
             );
         }
 
 
-        public function store(FeaturedProjectRequest $request)
+        public function store(BlogRequest $request)
         {
 
             DB::beginTransaction();
@@ -137,13 +161,13 @@
 
                 $data = $request->validated();
                 if ($request->hasFile('image'))
-                $data['image'] = $this->imageUpload($request->file('image'), 'featured_project');
+                $data['image'] = $this->imageUpload($request->file('image'), 'blog');
 
-                $dataInfo = $this->featuredprojectService->create($data);
+                $dataInfo = $this->blogService->create($data);
 
                 if ($dataInfo) {
-                    $message = 'Featured Project created successfully';
-                    $this->storeAdminWorkLog($dataInfo->id, 'featured_projects', $message);
+                    $message = 'Blog created successfully';
+                    $this->storeAdminWorkLog($dataInfo->id, 'blogs', $message);
 
                     DB::commit();
 
@@ -153,7 +177,7 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To create Featured Project.";
+                    $message = "Failed To create Blog.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
@@ -161,7 +185,7 @@
             } catch (Exception $err) {
 
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'FeaturedProjectController', 'store', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'BlogController', 'store', substr($err->getMessage(), 0, 1000));
 
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
@@ -174,23 +198,23 @@
 
         public function edit($id)
         {
-            $featuredproject = $this->featuredprojectService->find($id);
+            $blog = $this->blogService->find($id);
 
             return Inertia::render(
-                'Backend/FeaturedProject/Form',
+                'Backend/Blog/Form',
                 [
-                    'pageTitle' => fn () => 'Featured Project Edit',
+                    'pageTitle' => fn () => 'Blog Edit',
                     'breadcrumbs' => fn () => [
-                        ['link' => null, 'title' => 'Featured Project Manage'],
-                        ['link' => route('backend.featuredproject.edit', $id), 'title' => 'Featured Project Edit'],
+                        ['link' => null, 'title' => 'Blog Manage'],
+                        ['link' => route('backend.blog.edit', $id), 'title' => 'Blog Edit'],
                     ],
-                    'featuredproject' => fn () => $featuredproject,
+                    'blog' => fn () => $blog,
                     'id' => fn () => $id,
                 ]
             );
         }
 
-        public function update(FeaturedProjectRequest $request, $id)
+        public function update(BlogRequest $request, $id)
         {
             DB::beginTransaction();
             try {
@@ -198,15 +222,15 @@
                 $data = $request->validated();
 
                 if ($request->hasFile('image'))
-                $data['image'] = $this->imageUpload($request->file('image'), 'featured_project');
-                $FeaturedProject = $this->featuredprojectService->find($id);
+                $data['image'] = $this->imageUpload($request->file('image'), 'blog');
+                $Blog = $this->blogService->find($id);
 
 
-                $dataInfo = $this->featuredprojectService->update($data, $id);
+                $dataInfo = $this->blogService->update($data, $id);
 
                 if ($dataInfo->save()) {
-                    $message = 'Featured Project updated successfully';
-                    $this->storeAdminWorkLog($dataInfo->id, 'featured_projects', $message);
+                    $message = 'Blog updated successfully';
+                    $this->storeAdminWorkLog($dataInfo->id, 'blogs', $message);
 
                     DB::commit();
 
@@ -216,14 +240,14 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To update Featured Project.";
+                    $message = "Failed To update Blog.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
                 }
             } catch (Exception $err) {
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'FeaturedProjectcontroller', 'update', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'Blogcontroller', 'update', substr($err->getMessage(), 0, 1000));
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
                 return redirect()
@@ -239,9 +263,9 @@
 
             try {
 
-                if ($this->featuredprojectService->delete($id)) {
-                    $message = 'Featured Project deleted successfully';
-                    $this->storeAdminWorkLog($id, 'featured_projects', $message);
+                if ($this->blogService->delete($id)) {
+                    $message = 'Blog deleted successfully';
+                    $this->storeAdminWorkLog($id, 'blogs', $message);
 
                     DB::commit();
 
@@ -251,14 +275,14 @@
                 } else {
                     DB::rollBack();
 
-                    $message = "Failed To Delete Featured Project.";
+                    $message = "Failed To Delete Blog.";
                     return redirect()
                         ->back()
                         ->with('errorMessage', $message);
                 }
             } catch (Exception $err) {
                 DB::rollBack();
-                $this->storeSystemError('Backend', 'FeaturedProjectcontroller', 'destroy', substr($err->getMessage(), 0, 1000));
+                $this->storeSystemError('Backend', 'Blogcontroller', 'destroy', substr($err->getMessage(), 0, 1000));
                 DB::commit();
                 $message = "Server Errors Occur. Please Try Again.";
                 return redirect()
@@ -272,11 +296,11 @@
         DB::beginTransaction();
 
         try {
-            $dataInfo = $this->featuredprojectService->changeStatus(request());
+            $dataInfo = $this->blogService->changeStatus(request());
 
             if ($dataInfo->wasChanged()) {
-                $message = 'FeaturedProject ' . request()->status . ' Successfully';
-                $this->storeAdminWorkLog($dataInfo->id, 'featured_projects', $message);
+                $message = 'Blog ' . request()->status . ' Successfully';
+                $this->storeAdminWorkLog($dataInfo->id, 'blogs', $message);
 
                 DB::commit();
 
@@ -286,14 +310,14 @@
             } else {
                 DB::rollBack();
 
-                $message = "Failed To " . request()->status . " FeaturedProject.";
+                $message = "Failed To " . request()->status . " Blog.";
                 return redirect()
                     ->back()
                     ->with('errorMessage', $message);
             }
         } catch (Exception $err) {
             DB::rollBack();
-            $this->storeSystemError('Backend', 'FeaturedProjectController', 'changeStatus', substr($err->getMessage(), 0, 1000));
+            $this->storeSystemError('Backend', 'BlogController', 'changeStatus', substr($err->getMessage(), 0, 1000));
             DB::commit();
             $message = "Server Errors Occur. Please Try Again.";
             return redirect()

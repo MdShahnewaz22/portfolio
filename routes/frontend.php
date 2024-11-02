@@ -32,6 +32,9 @@ Route::get('/cache-clear', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/more-project', [HomeController::class, 'moreproject'])->name('moreproject');
+Route::get('/more-blog', [HomeController::class, 'moreblog'])->name('moreblog');
+Route::get('/blog-details/{id}', [HomeController::class, 'blogdetails'])->name('blogdetails');
 
 
 // Route::resource('contact', ContactController::class);

@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\WorkExperienceController;
 use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\FeaturedProjectController;
+use App\Http\Controllers\Backend\BlogController;
 //don't remove this comment from route namespace
 
 /*
@@ -94,6 +95,10 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 	// for FeaturedProject
 	Route::resource('featuredproject', FeaturedProjectController::class);
 	Route::get('featuredproject/{id}/status/{status}/change', [FeaturedProjectController::class, 'changeStatus'])->name('featuredproject.status.change');
+
+	// for Blog
+	Route::resource('blog', BlogController::class);
+	Route::get('blog/{id}/status/{status}/change', [BlogController::class, 'changeStatus'])->name('blog.status.change');
 
 	//don't remove this comment from route body
 });

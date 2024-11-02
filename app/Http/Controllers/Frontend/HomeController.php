@@ -10,6 +10,8 @@ use App\Services\SkillsService;
 use App\Services\AboutService;
 use App\Services\WorkExperienceService;
 use App\Services\EducationService;
+use App\Services\FeaturedProjectService;
+use App\Services\BlogService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Exception;
@@ -17,9 +19,9 @@ use Exception;
 
 class HomeController extends Controller
 {
-    protected $contactService,$Parsonal_InfoService,$skillsService,$AboutService,$WorkExperienceService,$educationService;
+    protected $contactService,$Parsonal_InfoService,$skillsService,$AboutService,$WorkExperienceService,$educationService,$featuredProjectService,$blogService;
 
-    public function __construct(ContactService $contactService,Parsonal_InfoService $Parsonal_InfoService,SkillsService $skillsService,AboutService $AboutService,WorkExperienceService $WorkExperienceService,EducationService $educationService)
+    public function __construct(ContactService $contactService,Parsonal_InfoService $Parsonal_InfoService,SkillsService $skillsService,AboutService $AboutService,WorkExperienceService $WorkExperienceService,EducationService $educationService,FeaturedProjectService $featuredProjectService,BlogService $blogService)
     {
         $this->contactService = $contactService;
         $this->Parsonal_InfoService = $Parsonal_InfoService;
@@ -27,6 +29,8 @@ class HomeController extends Controller
         $this->AboutService = $AboutService;
         $this->WorkExperienceService = $WorkExperienceService;
         $this->educationService = $educationService;
+        $this->featuredProjectService = $featuredProjectService;
+        $this->blogService = $blogService;
 
     }
 
@@ -38,11 +42,41 @@ class HomeController extends Controller
         $about = $this->AboutService->latest();
         $works = $this->WorkExperienceService->all();
         $educations = $this->educationService->all();
+        $featureds = $this->featuredProjectService->latest();
+        $blogs = $this->blogService->latest();
 
         //  dd($skills);
-        return view('frontend.home',compact('parsonal_info','skills','about','works','educations','Advantages'));
+        return view('frontend.home',compact('parsonal_info','skills','about','works','educations','Advantages','featureds','blogs'));
 
     }
+
+    public function moreproject()
+    {
+        $parsonal_info = $this->Parsonal_InfoService->latest();
+        $skills = $this->skillsService->latest();
+        $featureds = $this->featuredProjectService->all();
+        // dd($featureds);
+        return view('frontend.more_project', compact('featureds','parsonal_info','skills'));
+    }
+
+    public function moreblog()
+    {
+        $parsonal_info = $this->Parsonal_InfoService->latest();
+        $skills = $this->skillsService->latest();
+        $blogs = $this->blogService->all();
+        // dd($featureds);
+        return view('frontend.more_blog', compact('blogs','parsonal_info','skills'));
+    }
+
+    public function blogdetails($id)
+    {
+        $parsonal_info = $this->Parsonal_InfoService->latest();
+        $skills = $this->skillsService->latest();
+        $blogs = $this->blogService->find($id);
+        // dd($featureds);
+        return view('frontend.blog_details', compact('blogs','parsonal_info','skills'));
+    }
+
 
     public function contact(Request $request)
     {
