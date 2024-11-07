@@ -167,44 +167,41 @@
 
                             <div class="blog-list md:space-y-7.5 space-y-5">
                                 @foreach ($blogs as $blog)
-
-
-
-                                <div
-                                    class="grid md:gap-2 grid-cols-12 overflow-hidden article group bg-flashWhite dark:bg-metalBlack items-center rounded-2xl p-3.5">
-                                    <div class="flex col-span-12 overflow-hidden thumbnail sm:col-span-6 md:col-span-5">
-                                        <a class='block w-full overflow-hidden rounded-xl' href='article-details.html'>
-                                            <img src="{{ $blog->image }}"
-                                                class="object-cover object-center w-full h-full min-h-[288px] transition-all duration-300 ease-in-out max-h-60 md:min-h-60 group-hover:scale-105"
-                                                alt="Post Title">
-                                        </a>
-                                    </div>
                                     <div
-                                        class="relative flex flex-col col-span-12 px-3 pt-6 pb-2 md:p-5 post-content sm:col-span-6 md:col-span-7">
-                                        <div class="flex items-center gap-5">
-                                            <div class="text-sm font-medium tags">
-                                                <a href="#" class="transition-colors hover:text-theme">
-                                                    UI Design
-                                                </a>,
-                                                <span class="post_date">
-                                                   {{$blog->date}}
-                                                </span>
+                                        class="grid md:gap-2 grid-cols-12 overflow-hidden article group bg-flashWhite dark:bg-metalBlack items-center rounded-2xl p-3.5">
+                                        <div class="flex col-span-12 overflow-hidden thumbnail sm:col-span-6 md:col-span-5">
+                                            <a class='block w-full overflow-hidden rounded-xl' href='article-details.html'>
+                                                <img src="{{ $blog->image }}"
+                                                    class="object-cover object-center w-full h-full min-h-[288px] transition-all duration-300 ease-in-out max-h-60 md:min-h-60 group-hover:scale-105"
+                                                    alt="Post Title">
+                                            </a>
+                                        </div>
+                                        <div
+                                            class="relative flex flex-col col-span-12 px-3 pt-6 pb-2 md:p-5 post-content sm:col-span-6 md:col-span-7">
+                                            <div class="flex items-center gap-5">
+                                                <div class="text-sm font-medium tags">
+                                                    <a href="#" class="transition-colors hover:text-theme">
+                                                        <b>UI Design</b>
+                                                    </a>,
+                                                    <span class="post_date">
+                                                        {{ $blog->date }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="post-title mt-3 md:mt-4.5 mb-6 md:mb-8">
+                                                <a class='text-xl font-semibold leading-normal text-black transition-colors dark:text-white line-clamp-2 2xl:text-2xl 2xl:leading-normal hover:text-theme'
+                                                    href='article-details.html'>
+                                                    {{ $blog->title }}
+                                                </a>
+                                            </div>
+                                            <div class="read-details">
+                                                <a class='inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white'
+                                                    href="{{ url('/blog-details/' . $blog->id) }}">
+                                                    Read More
+                                                </a>
                                             </div>
                                         </div>
-                                        <div class="post-title mt-3 md:mt-4.5 mb-6 md:mb-8">
-                                            <a class='text-xl font-semibold leading-normal text-black transition-colors dark:text-white line-clamp-2 2xl:text-2xl 2xl:leading-normal hover:text-theme'
-                                                href='article-details.html'>
-                                               {{$blog->title}}
-                                            </a>
-                                        </div>    
-                                        <div class="read-details">
-                                            <a class='inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white'
-                                                href="{{ url ('/blog-details/'. $blog->id)}}">
-                                                Read More
-                                            </a>
-                                        </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
 
@@ -217,6 +214,155 @@
                         </div>
                     </div>
                     <!-- Blog Section End -->
+
+
+                    <!-- Nav/Navigation Start -->
+                    <div
+                        class="minfo__nav__wrapper bg-snowWhite dark:bg-power__black max-xl:hidden fixed top-1/2 -translate-y-1/2 right-4 2xl:right-14 z-999 flex items-center flex-col gap-4 border border-platinum dark:border-metalBlack rounded-4xl px-2.5 py-4">
+
+                        <!-- Site Logo Start -->
+                        <div
+                            class="flex border rounded-full logo w-15 h-15 border-platinum dark:border-metalBlack flex-center">
+                            <a href='index.html'>
+                                <img src="{{ asset('assets/frontend/assets/img/site-logo.svg') }}" alt="Minfo">
+                            </a>
+                        </div>
+                        <!-- Site Logo Start -->
+
+
+                        <!-- Main Menu/Navigation Start -->
+                        <div class="my-4 menu">
+                            <ul class="space-y-2 text-center">
+                                <li data-scroll-nav="0" class="relative group active">
+                                    <a href="#home"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Home">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-home"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="1" class="relative group">
+                                    <a href="#about"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="About">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-user"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="2" class="relative group">
+                                    <a href="#service"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Service">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-briefcase"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="3" class="relative group">
+                                    <a href="#skill"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Skills">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-graduation-cap"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="4" class="relative group">
+                                    <a href="#resume"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Resume">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-file-alt"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="5" class="relative group">
+                                    <a href="#portfolio"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Poftfolio">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-tasks-alt"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="6" class="relative group">
+                                    <a href="#blog"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Blog">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-blog"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="7" class="relative group">
+                                    <a href="#testimonial"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Testimonial">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-comment-alt-lines"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-scroll-nav="8" class="relative group">
+                                    <a href="#contact"
+                                        class="w-9 h-9 rounded-full flex-center group-[&.active]:bg-white dark:group-[&.active]:bg-metalBlack group-hover:bg-white dark:group-hover:bg-metalBlack transition-all duration-300 before:content-[attr(data-title)] before:absolute before:right-10 before:bg-white dark:before:bg-metalBlack before:text-sm text-theme dark:before:text-white before:px-4 before:py-2 before:rounded-md before:font-normal dark:before:font-light before:opacity-0 before:transition-all before:duration-200 group-hover:before:opacity-100 after:content-[''] after:absolute after:w-0 after:h-0 after:right-8 after:border-solid after:border-t-4 after:border-r-0 after:border-b-4 after:border-l-8 after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-white dark:after:border-l-metalBlack after:opacity-0 after:transition-all after:duration-200 group-hover:after:opacity-100"
+                                        data-title="Contact">
+                                        <span
+                                            class="text-black dark:text-white group-hover:text-theme group-[&.active]:text-theme">
+                                            <i class="fal fa-envelope"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Main Menu/Navigation End -->
+
+                        <!-- Share Button Wrapper Start -->
+                        <div class="relative share group">
+                            <button
+                                class="w-10 h-10 text-sm text-black border rounded-full border-platinum dark:border-metalBlack flex-center group-hover:bg-white dark:group-hover:bg-metalBlack dark:text-white"
+                                aria-label="Share">
+                                <i class="fal fa-share-alt"></i>
+                            </button>
+
+                            <!-- Social Share Icon Start  -->
+                            <div
+                                class="absolute bottom-0 flex items-center invisible px-5 py-6 space-x-3 transition-all duration-300 -translate-y-1/2 bg-white opacity-0 social-icons top-1/2 dark:bg-nightBlack rounded-4xl right-6 group-hover:opacity-100 group-hover:visible group-hover:right-10 -z-1">
+                                <a href="https://www.facebook.com/md.shahnewaz.14268" class="flex transition duration-200 hover:text-theme"
+                                    title="Share with Facebook">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" class="flex transition duration-200 hover:text-theme"
+                                    title="Share with Linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="flex transition duration-200 hover:text-theme"
+                                    title="Share with X">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.instagram.com/___mohammad_shahnewaz___/" class="flex transition duration-200 hover:text-theme"
+                                    title="Share with X">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <!-- Social Share Icon End  -->
+                        </div>
+                        <!-- Share Button Wrapper End -->
+
+                    </div>
+                    <!-- Nav/Navigation End -->
+
+
 
 
 

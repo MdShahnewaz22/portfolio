@@ -18,8 +18,7 @@ class FeaturedProjectRequest extends FormRequest
             case 'POST':
                 return [
                     'project_name' => 'required|string',
-					'live_link' => 'required|string',
-					// 'image' => 'required|string'
+                    'live_link' => 'required|string',
                     'image' => 'nullable|mimes:png,jpg,jpeg|max:25048',
                 ];
                 break;
@@ -28,8 +27,8 @@ class FeaturedProjectRequest extends FormRequest
             case 'PUT':
                 return [
                     'project_name' => 'required|string',
-					'live_link' => 'required|string',
-					// 'image' => 'required|string'
+                    'live_link' => 'required|string',
+
                 ];
 
                 if ($this->hasFile('image')) {
@@ -39,6 +38,8 @@ class FeaturedProjectRequest extends FormRequest
                     $rules['image'] = 'nullable';
                 }
                 return $rules;
+
+
                 break;
         }
     }
@@ -47,8 +48,8 @@ class FeaturedProjectRequest extends FormRequest
     {
         return [
             'project_name.required' => 'The project_name field is required.',
- 			'live_link.required' => 'The live_link field is required.',
- 			// 'image.required' => 'The image field is required.',
+            'live_link.required' => 'The live_link field is required.',
+            // 'image.required' => 'The image field is required.',
 
 
         ];

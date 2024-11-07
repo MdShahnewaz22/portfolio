@@ -32,7 +32,25 @@ const handleimage = (event) => {
     reader.readAsDataURL(file);
 };
 
-const handlefileChange = (event) => {
+// const handleImages = (event) => {
+//     const files = Array.from(event.target.files);
+//     form.imagePreviews = []; // Clear any existing previews
+
+//     files.forEach((file) => {
+//         const reader = new FileReader();
+//         reader.onload = (e) => {
+//             form.imagePreviews.push(e.target.result); // Push each image preview to the array
+//         };
+//         reader.readAsDataURL(file); // Read file as Data URL for preview
+//     });
+// };
+
+
+
+
+
+
+const handlefile = (event) => {
     const file = event.target.files[0];
     form.file = file;
 };
@@ -106,6 +124,49 @@ const submit = () => {
                             :message="form.errors.live_link"
                         />
                     </div>
+
+                    <!-- <div class="col-span-1 md:col-span-2">
+                        <InputLabel for="image" value="Images" />
+                        <div
+                            v-if="
+                                form.imagePreviews && form.imagePreviews.length
+                            "
+                        >
+                            <div
+                                v-for="(image, index) in form.imagePreviews"
+                                :key="index"
+                                class="inline-block mr-2"
+                            >
+                                <input
+                                    type="checkbox"
+                                    :value="index"
+                                    v-model="selectedImages"
+                                    class="mr-1"
+                                    @change="toggleImageSelection(index)"
+                                />
+                                <img
+                                    :src="image"
+                                    alt="Photo Preview"
+                                    class="max-w-xs mt-2"
+                                    height="60"
+                                    width="60"
+                                />
+                            </div>
+                        </div>
+                        <input
+                            id="image"
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
+                            @change="handleImages"
+                        />
+                        <InputError
+                            class="mt-2"
+                            :message="form.errors.images"
+                        />
+                    </div> -->
+
                     <div class="col-span-1 md:col-span-2">
                         <InputLabel for="image" value="Image" />
                         <div v-if="form.imagePreview">
@@ -126,26 +187,6 @@ const submit = () => {
                         />
                         <InputError class="mt-2" :message="form.errors.image" />
                     </div>
-                    <!-- <div class="col-span-1 md:col-span-2">
-                        <InputLabel for="image" value="Image" />
-                        <div v-if="form.imagePreview">
-                            <img
-                                :src="form.imagePreview"
-                                alt="Photo Preview"
-                                class="max-w-xs mt-2"
-                                height="60"
-                                width="60"
-                            />
-                        </div>
-                        <input
-                            id="image"
-                            type="file"
-                            accept="image/*"
-                            class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
-                            @change="handleImageChange"
-                        />
-                        <InputError class="mt-2" :message="form.errors.image" />
-                    </div> -->
                 </div>
                 <div class="flex items-center justify-end mt-4">
                     <PrimaryButton

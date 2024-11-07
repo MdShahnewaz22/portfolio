@@ -299,7 +299,7 @@
                         <!-- Social Share Icon Start  -->
                         <div
                             class="absolute bottom-0 flex items-center invisible px-5 py-6 space-x-3 transition-all duration-300 -translate-y-1/2 bg-white opacity-0 social-icons top-1/2 dark:bg-nightBlack rounded-4xl right-6 group-hover:opacity-100 group-hover:visible group-hover:right-10 -z-1">
-                            <a href="#" class="flex transition duration-200 hover:text-theme"
+                            <a href="https://www.facebook.com/md.shahnewaz.14268" class="flex transition duration-200 hover:text-theme"
                                 title="Share with Facebook">
                                 <i class="fab fa-facebook"></i>
                             </a>
@@ -310,7 +310,7 @@
                             <a href="#" class="flex transition duration-200 hover:text-theme" title="Share with X">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a href="#" class="flex transition duration-200 hover:text-theme" title="Share with X">
+                            <a href="https://www.instagram.com/___mohammad_shahnewaz___/" class="flex transition duration-200 hover:text-theme" title="Share with X">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
@@ -1313,7 +1313,7 @@
                                             <div class="read-details">
 
                                                 <a class="inline-flex items-center gap-2 border border-theme text-theme text-sm py-3.5 px-6 rounded-3xl leading-none transition-all duration-300 hover:bg-themeHover hover:border-themeHover dark:font-medium hover:text-white"
-                                            href="{{ url('/blog-details'.$blog->id)}}">Read More</a>
+                                            href="{{ url ('/blog-details/'. $blog->id)}}">Read More</a>
                                             </div>
                                         </div>
                                     </div>

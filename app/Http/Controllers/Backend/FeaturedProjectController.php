@@ -139,6 +139,14 @@
                 if ($request->hasFile('image'))
                 $data['image'] = $this->imageUpload($request->file('image'), 'featured_project');
 
+                // if ($request->hasFile('images')) {
+                //     $data['images'] = [];
+                //     foreach ($request->file('images') as $image) {
+                //         $data['images'][] = $this->imageUpload($image, 'featured_project');
+                //     }
+                // }
+
+
                 $dataInfo = $this->featuredprojectService->create($data);
 
                 if ($dataInfo) {
