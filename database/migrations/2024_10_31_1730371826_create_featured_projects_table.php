@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('project_name', 255);
 			$table->string('live_link', 255);
-			$table->string('image', 255);
-			
+			$table->json('image')->nullable();
+
             $table->enum('status',['Active','Inactive','Deleted'])->default('Active');
             $table->timestamps();
             $table->softDeletes();
-         
+
         });
     }
 

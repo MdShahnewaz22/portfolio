@@ -19,7 +19,7 @@ class FeaturedProjectRequest extends FormRequest
                 return [
                     'project_name' => 'required|string',
                     'live_link' => 'required|string',
-                    'image' => 'nullable|mimes:png,jpg,jpeg|max:25048',
+                    'image.*' => 'nullable|mimes:png,jpg,jpeg|max:25048',
                 ];
                 break;
 
@@ -32,10 +32,10 @@ class FeaturedProjectRequest extends FormRequest
                 ];
 
                 if ($this->hasFile('image')) {
-                    $rules['image'] = 'nullable|file|mimes:png,jpg,jpeg|max:25048';
+                    $rules['image.*'] = 'nullable|file|mimes:png,jpg,jpeg|max:25048';
                 } else {
 
-                    $rules['image'] = 'nullable';
+                    $rules['image.*'] = 'nullable';
                 }
                 return $rules;
 

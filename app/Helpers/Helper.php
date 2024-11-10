@@ -322,3 +322,4 @@ function camelCaseVariable($string)
 function camelCase($str) {
     return lcfirst(str_replace(' ', '', ucwords(str_replace(['_', '-'], ' ', $str))));
 }
+

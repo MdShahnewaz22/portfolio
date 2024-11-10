@@ -13,47 +13,32 @@ const props = defineProps(["featuredproject", "id"]);
 const form = useForm({
     project_name: props.featuredproject?.project_name ?? "",
     live_link: props.featuredproject?.live_link ?? "",
-    image: props.featuredproject?.image ?? "",
-
-    imagePreview: props.featuredproject?.image ?? "",
-    filePreview: props.featuredproject?.file ?? "",
+    image: props.featuredproject?.image ?? [],
+    imagePreview: props.featuredproject?.image ?? [],
     _method: props.featuredproject?.id ? "put" : "post",
 });
 
-const handleimage = (event) => {
-    const file = event.target.files[0];
-    form.image = file;
+
+const handleImageChange = event => {
+    const files = Array.from(event.target.files);
+    form.image = files;
 
     // Display image preview
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        form.imagePreview = e.target.result;
-    };
-    reader.readAsDataURL(file);
+    form.imagePreview = [];
+    const renderPromises =files.map((file)=>{
+        return new Promise((resolve)=>{
+            const reader=new FileReader();
+            reader.onload=(e)=>{
+                resolve(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+    Promise.all(renderPromises).then((previews)=>{
+        form.imagePreview=previews
+    });
 };
 
-// const handleImages = (event) => {
-//     const files = Array.from(event.target.files);
-//     form.imagePreviews = []; // Clear any existing previews
-
-//     files.forEach((file) => {
-//         const reader = new FileReader();
-//         reader.onload = (e) => {
-//             form.imagePreviews.push(e.target.result); // Push each image preview to the array
-//         };
-//         reader.readAsDataURL(file); // Read file as Data URL for preview
-//     });
-// };
-
-
-
-
-
-
-const handlefile = (event) => {
-    const file = event.target.files[0];
-    form.file = file;
-};
 
 const submit = () => {
     const routeName = props.id
@@ -125,68 +110,21 @@ const submit = () => {
                         />
                     </div>
 
-                    <!-- <div class="col-span-1 md:col-span-2">
-                        <InputLabel for="image" value="Images" />
-                        <div
-                            v-if="
-                                form.imagePreviews && form.imagePreviews.length
-                            "
-                        >
-                            <div
-                                v-for="(image, index) in form.imagePreviews"
-                                :key="index"
-                                class="inline-block mr-2"
-                            >
-                                <input
-                                    type="checkbox"
-                                    :value="index"
-                                    v-model="selectedImages"
-                                    class="mr-1"
-                                    @change="toggleImageSelection(index)"
-                                />
-                                <img
-                                    :src="image"
-                                    alt="Photo Preview"
-                                    class="max-w-xs mt-2"
-                                    height="60"
-                                    width="60"
-                                />
+
+                    <div class="col-span-1 md:col-span-4">
+                        <InputLabel for="image" value="Image" />
+                        <div class="flex flex-wrap mt-2">
+                            <div v-for="(preview, index) in form.imagePreview" :key="index" class="relative max-w-xs mt-2 mr-2">
+                                <img :src="preview" alt="Photo Preview" class="object-cover w-16 h-16 rounded-md" />
                             </div>
                         </div>
-                        <input
-                            id="image"
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
-                            @change="handleImages"
-                        />
-                        <InputError
-                            class="mt-2"
-                            :message="form.errors.images"
-                        />
-                    </div> -->
-
-                    <div class="col-span-1 md:col-span-2">
-                        <InputLabel for="image" value="Image" />
-                        <div v-if="form.imagePreview">
-                            <img
-                                :src="form.imagePreview"
-                                alt="Photo Preview"
-                                class="max-w-xs mt-2"
-                                height="60"
-                                width="60"
-                            />
-                        </div>
-                        <input
-                            id="image"
-                            type="file"
-                            accept="image/*"
-                            class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:border-slate-600"
-                            @change="handleimage"
-                        />
+                        <input id="image" type="file" accept="image/*" multiple
+                            class="block w-full p-2 text-sm rounded-md shadow-sm border-slate-300 dark:border-slate-500 dark:bg-slate-700 dark:text-slate-200 focus:border-indigo-300 dark:focus:borhandleImageChangeder-slate-600"
+                            @change="handleImageChange" />
                         <InputError class="mt-2" :message="form.errors.image" />
                     </div>
+
+
                 </div>
                 <div class="flex items-center justify-end mt-4">
                     <PrimaryButton

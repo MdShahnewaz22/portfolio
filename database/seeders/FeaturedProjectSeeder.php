@@ -27,17 +27,27 @@ class FeaturedProjectSeeder extends Seeder
             [
                 'project_name'=>'Hospital Management System',
                 'live_link'=>'HTTPS://SMARTCARE.COM.BD/',
-                'image'=>'featured_project/doctor 6.png',
+
+                'image' => json_encode([
+                    'featured_project/doctor6.png',
+                ]),
+
             ],
+
             [
                 'project_name'=>'ServiceShop',
                 'live_link'=>'ServiceShop',
-                'image'=>'featured_project/s1.jpg',
+                'image' => json_encode([
+                    'featured_project/s1.jpg',
+                ]),
             ],
+
             [
                 'project_name'=>'Case Management System',
                 'live_link'=>'https://case-management.rdtl.xyz/',
-                'image'=>'featured_project/case.png',
+                'image' => json_encode([
+                    'featured_project/case.png',
+                ]),
             ]
         ];
     }

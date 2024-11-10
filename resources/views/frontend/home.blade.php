@@ -1120,7 +1120,7 @@
                                         <a class='flex items-center justify-center p-3 overflow-hidden border md:p-4 rounded-xl border-platinum dark:border-greyBlack'
                                             href='project-single.html'>
                                             <div class="img-wrapper">
-                                                <img src="{{ $featured->image }}"
+                                                {{-- <img src="{{ $featured->image }}" --}}
                                                     class="rounded-lg max-md:min-h-[17rem] max-md:w-full max-md:object-cover max-md:object-center transition-all duration-300 group-hover:blur-xs"
                                                     alt="portfolio">
                                                 <div
